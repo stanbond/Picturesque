@@ -1,4 +1,5 @@
 class API::SessionsController < ApplicationController
+
   def create
     @user = User.find_by_credentials(
       params[:user][:username],
@@ -11,7 +12,7 @@ class API::SessionsController < ApplicationController
       render json: ['Wrong credentials!'], status: 401
     end
   end
-  
+
   def destroy
     if current_user
       logout
