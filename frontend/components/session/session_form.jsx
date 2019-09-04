@@ -42,7 +42,7 @@ class SessionForm extends React.Component {
 
         <label htmlFor="username">Username</label>
         <input type="text" id="username" value={this.state.username} onChange={this.update('username')} />
-
+        
         <label htmlFor="password">Password</label>
         <input type="password" id="password" value={this.state.password} onChange={this.update('password')} />
 
