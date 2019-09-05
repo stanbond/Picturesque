@@ -10,12 +10,11 @@
     background-size: 244px 422px;
 }
 .ig-logo {
-    // logo go here 
-    // background : url(images/IMG_4850.jpg)
+    background: image-url("logo.jpg") no-repeat;
     display: flex;
-    font-size: 50px;
-    height: 51px;
-    width: 175px;
+    background-size: contain;
+    height: 75px;
+    width: 200px;
     justify-content: center;
     margin-top: 22px;
     margin-left: 85px;

@@ -36,7 +36,7 @@ class SessionForm extends React.Component {
       return ( 
         <div className="login-page-container">
           <div className="login-div">
-            {/* logo */}
+            <div className="ig-logo"></div>
             <form onSubmit={this.handleSubmit} className="login-form-box">
       
               <div className="login-form">
@@ -63,7 +63,7 @@ class SessionForm extends React.Component {
                   className="login-input"
                   placeholder="Password" />
                 <br></br>
-                <button className="login-session-submit">{linkButton}</button>
+                <button className="login-button">{linkButton}</button>
               </div>
             </form>
           </div>
@@ -78,7 +78,7 @@ class SessionForm extends React.Component {
     } else {
       return (
         <div className="signup-form-container">
-          {/* logo */}
+          {/* <div className="ig-logo"></div> */}
           <form onSubmit={this.handleSubmit} className="signup-form-box">
             <div className="signup-form">
 
@@ -104,7 +104,7 @@ class SessionForm extends React.Component {
                 className="signup-input"
                 placeholder="Password" />
               <br></br>
-              <button className="signup-session-submit">{linkButton}</button>
+              <button className="login-button">{linkButton}</button>
             </div>
           </form>
         </div>

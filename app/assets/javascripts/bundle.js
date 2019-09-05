@@ -444,7 +444,9 @@ function (_React$Component) {
           className: "login-page-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "login-div"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "ig-logo"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
           onSubmit: this.handleSubmit,
           className: "login-form-box"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -466,7 +468,7 @@ function (_React$Component) {
           className: "login-input",
           placeholder: "Password"
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "login-session-submit"
+          className: "login-button"
         }, linkButton)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "have-an-acount"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -500,7 +502,7 @@ function (_React$Component) {
           className: "signup-input",
           placeholder: "Password"
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "signup-session-submit"
+          className: "login-button"
         }, linkButton))));
       }
     }
@@ -582,7 +584,9 @@ var splash = function splash(_ref) {
       className: "splash-content-container"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "splash-content"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "ig-logo"
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
       className: "greeting-msg"
     }, "Sign up to see photos and videos from your friends."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "signup-login-container"
@@ -604,12 +608,7 @@ var splash = function splash(_ref) {
       className: "login-signup"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_signup_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "login-signup-container"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-      to: "/signup"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      type: "button",
-      className: "login-button"
-    }, "Sign Up")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "terms"
     }, "By signing up, you agree to our Terms, Data Policy and Cookies Policy"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "have-an-account"

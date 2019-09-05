@@ -13,7 +13,7 @@ const splash = ({currentUser, logout}) => {
     </div>
     <div className="splash-content-container">
         <div className="splash-content">
-          {/* <img src={logo} /> */}
+          <div className="ig-logo"></div>
           <h2 className="greeting-msg">Sign up to see photos and videos from your friends.</h2>
       <div className="signup-login-container"></div>
         <Link to="/login" className="login-link-button">
@@ -29,9 +29,9 @@ const splash = ({currentUser, logout}) => {
       <nav className="login-signup">
         <SignUpFormContainer />
           <div className="login-signup-container">
-            <Link to="/signup"><button type="button" className="login-button">
+            {/* <Link to="/signup"><button type="button" className="login-button">
               Sign Up</button>
-            </Link>
+            </Link> */}
           </div>
       </nav>
       
