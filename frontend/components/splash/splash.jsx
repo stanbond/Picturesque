@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SignUpFormContainer from '../session/signup_form_container';
+// import logo from './logo.jpg';
 
 const splash = ({currentUser, logout}) => {
   const splashForm = () => (
@@ -12,12 +13,12 @@ const splash = ({currentUser, logout}) => {
     </div>
     <div className="splash-content-container">
         <div className="splash-content">
-          <h1 className="ig-logo">Picturesque</h1>
+          {/* <img src={logo} /> */}
           <h2 className="greeting-msg">Sign up to see photos and videos from your friends.</h2>
       <div className="signup-login-container"></div>
-        <Link to="/login" className="login-link-button">
+        {/* <Link to="/login" className="login-link-button">
           <button type="button" className="login-button">Log in</button>
-        </Link>
+        </Link> */}
       {/* </div> */}
       <div className="or-container">
         <div className="or-border"></div>
@@ -28,9 +29,9 @@ const splash = ({currentUser, logout}) => {
       <nav className="login-signup">
         <SignUpFormContainer />
           <div className="login-signup-container">
-            <Link to="/signup"><button type="button" className="signup-button">
+            {/* <Link to="/signup"><button type="button" className="signup-button">
               Sign Up!</button>
-            </Link>
+            </Link> */}
           </div>
       </nav>
       

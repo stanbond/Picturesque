@@ -31,11 +31,11 @@ class SessionForm extends React.Component {
     })
 
     const linkButton = formType === 'login' ? "Login" : "Sign Up"
-
+    // const typeForm = formType === 'login' ? 
     return (
-      <div className="signup-form-container">
+      <div className="">
         <form onSubmit={this.handleSubmit} className="signup-form-box">
-          <div className="signup-form"></div>
+          {/* <div ></div> */}
           <header>{formType}</header>
           
           <ul className="errors">
@@ -48,7 +48,7 @@ class SessionForm extends React.Component {
           <label htmlFor="password">Password</label>
           <input type="password" id="password" value={this.state.password} onChange={this.update('password')} className="signup-input" />
 
-          <button className="signup-session-submit">{linkButton}</button>
+          <button>{linkButton}</button>
         </form>
       </div>
     );

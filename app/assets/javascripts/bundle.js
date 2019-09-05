@@ -437,15 +437,14 @@ function (_React$Component) {
       var errorsLi = errors.session.map(function (error) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, error);
       });
-      var linkButton = formType === 'login' ? "Login" : "Sign Up";
+      var linkButton = formType === 'login' ? "Login" : "Sign Up"; // const typeForm = formType === 'login' ? 
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "signup-form-container"
+        className: ""
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
         className: "signup-form-box"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "signup-form"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "errors"
       }, errorsLi), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "username"
@@ -463,9 +462,7 @@ function (_React$Component) {
         value: this.state.password,
         onChange: this.update('password'),
         className: "signup-input"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "signup-session-submit"
-      }, linkButton)));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, linkButton)));
     }
   }]);
 
@@ -526,7 +523,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_signup_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../session/signup_form_container */ "./frontend/components/session/signup_form_container.js");
 
 
-
+ // import logo from './logo.jpg';
 
 var splash = function splash(_ref) {
   var currentUser = _ref.currentUser,
@@ -545,19 +542,11 @@ var splash = function splash(_ref) {
       className: "splash-content-container"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "splash-content"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-      className: "ig-logo"
-    }, "Picturesque"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
       className: "greeting-msg"
     }, "Sign up to see photos and videos from your friends."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "signup-login-container"
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-      to: "/login",
-      className: "login-link-button"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      type: "button",
-      className: "login-button"
-    }, "Log in")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "or-container"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "or-border"
@@ -569,12 +558,7 @@ var splash = function splash(_ref) {
       className: "login-signup"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_signup_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "login-signup-container"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-      to: "/signup"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      type: "button",
-      className: "signup-button"
-    }, "Sign Up!")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "terms"
     }, "By signing up, you agree to our Terms, Data Policy and Cookies Policy"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "have-an-account"
