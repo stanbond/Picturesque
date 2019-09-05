@@ -437,32 +437,69 @@ function (_React$Component) {
       var errorsLi = errors.session.map(function (error) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, error);
       });
-      var linkButton = formType === 'login' ? "Login" : "Sign Up"; // const typeForm = formType === 'login' ? 
+      var linkButton = formType === 'login' ? "Login" : "Sign Up";
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: ""
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit,
-        className: "signup-form-box"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "errors"
-      }, errorsLi), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "username"
-      }, "Username"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        id: "username",
-        value: this.state.username,
-        onChange: this.update('username'),
-        className: "signup-input"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "password"
-      }, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "password",
-        id: "password",
-        value: this.state.password,
-        onChange: this.update('password'),
-        className: "signup-input"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, linkButton)));
+      if (formType === 'login') {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "login-page-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "login-div"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+          onSubmit: this.handleSubmit,
+          className: "login-form-box"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "login-form"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          className: "errors"
+        }, errorsLi), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          htmlFor: "username"
+        }, "Username"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          id: "username",
+          value: this.state.username,
+          onChange: this.update('username'),
+          className: "login-input"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          htmlFor: "password"
+        }, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "password",
+          id: "password",
+          value: this.state.password,
+          onChange: this.update('password'),
+          className: "login-input"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "login-session-submit"
+        }, linkButton)))));
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "signup-form-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+          onSubmit: this.handleSubmit,
+          className: "signup-form-box"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "signup-form"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          className: "errors"
+        }, errorsLi), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          htmlFor: "username"
+        }, "Username"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          id: "username",
+          value: this.state.username,
+          onChange: this.update('username'),
+          className: "signup-input"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          htmlFor: "password"
+        }, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "password",
+          id: "password",
+          value: this.state.password,
+          onChange: this.update('password'),
+          className: "signup-input"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "signup-session-submit"
+        }, linkButton))));
+      }
     }
   }]);
 

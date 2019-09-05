@@ -31,27 +31,53 @@ class SessionForm extends React.Component {
     })
 
     const linkButton = formType === 'login' ? "Login" : "Sign Up"
-    // const typeForm = formType === 'login' ? 
-    return (
-      <div className="">
-        <form onSubmit={this.handleSubmit} className="signup-form-box">
-          {/* <div ></div> */}
-          <header>{formType}</header>
-          
-          <ul className="errors">
-            {errorsLi}
-          </ul>
+    if (formType === 'login'){
+      return ( 
+        <div className="login-page-container">
+          <div className="login-div">
+            {/* logo */}
+            <form onSubmit={this.handleSubmit} className="login-form-box">
+      
+              <div className="login-form">
+              
+                <ul className="errors">
+                  {errorsLi}
+                </ul>
 
-          <label htmlFor="username">Username</label>
-          <input type="text" id="username" value={this.state.username} onChange={this.update('username')} className="signup-input" />
-          
-          <label htmlFor="password">Password</label>
-          <input type="password" id="password" value={this.state.password} onChange={this.update('password')} className="signup-input" />
+                <label htmlFor="username">Username</label>
+                <input type="text" id="username" value={this.state.username} onChange={this.update('username')} className="login-input" />
+                
+                <label htmlFor="password">Password</label>
+                <input type="password" id="password" value={this.state.password} onChange={this.update('password')} className="login-input" />
 
-          <button>{linkButton}</button>
-        </form>
-      </div>
-    );
+                <button className="login-session-submit">{linkButton}</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="signup-form-container">
+          <form onSubmit={this.handleSubmit} className="signup-form-box">
+            <div className="signup-form">
+
+              <ul className="errors">
+                {errorsLi}
+              </ul>
+
+              <label htmlFor="username">Username</label>
+              <input type="text" id="username" value={this.state.username} onChange={this.update('username')} className="signup-input" />
+
+              <label htmlFor="password">Password</label>
+              <input type="password" id="password" value={this.state.password} onChange={this.update('password')} className="signup-input" />
+
+              <button className="signup-session-submit">{linkButton}</button>
+            </div>
+          </form>
+        </div>
+      );
+    }
   }
 }
 
