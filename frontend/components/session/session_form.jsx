@@ -31,6 +31,7 @@ class SessionForm extends React.Component {
     })
 
     const linkButton = formType === 'login' ? "Login" : "Sign Up"
+
     if (formType === 'login'){
       return ( 
         <div className="login-page-container">
@@ -44,21 +45,40 @@ class SessionForm extends React.Component {
                   {errorsLi}
                 </ul>
 
-                <label htmlFor="username">Username</label>
-                <input type="text" id="username" value={this.state.username} onChange={this.update('username')} className="login-input" />
-                
-                <label htmlFor="password">Password</label>
-                <input type="password" id="password" value={this.state.password} onChange={this.update('password')} className="login-input" />
-
+                <label></label>
+                <input 
+                  type="text" 
+                  id="username" 
+                  value={this.state.username} 
+                  onChange={this.update('username')} 
+                  className="login-input"
+                  placeholder="Phone number, username or email" />
+                <br></br>
+                <label></label>
+                <input 
+                  type="password" 
+                  id="password" 
+                  value={this.state.password} 
+                  onChange={this.update('password')} 
+                  className="login-input"
+                  placeholder="Password" />
+                <br></br>
                 <button className="login-session-submit">{linkButton}</button>
               </div>
             </form>
+          </div>
+        
+          <div className="have-an-acount">
+            <p className="have-an-account-p">Don't have an account?
+              <Link to="/signup" className="signup-link"> Sign up</Link>
+            </p>
           </div>
         </div>
       );
     } else {
       return (
         <div className="signup-form-container">
+          {/* logo */}
           <form onSubmit={this.handleSubmit} className="signup-form-box">
             <div className="signup-form">
 
@@ -66,12 +86,24 @@ class SessionForm extends React.Component {
                 {errorsLi}
               </ul>
 
-              <label htmlFor="username">Username</label>
-              <input type="text" id="username" value={this.state.username} onChange={this.update('username')} className="signup-input" />
-
-              <label htmlFor="password">Password</label>
-              <input type="password" id="password" value={this.state.password} onChange={this.update('password')} className="signup-input" />
-
+              <label></label>
+              <input 
+                type="text" 
+                id="username" 
+                value={this.state.username} 
+                onChange={this.update('username')} 
+                className="signup-input"
+                placeholder="Username" />
+              <br></br>
+              <label></label>
+              <input 
+                type="password" 
+                id="password" 
+                value={this.state.password} 
+                onChange={this.update('password')} 
+                className="signup-input"
+                placeholder="Password" />
+              <br></br>
               <button className="signup-session-submit">{linkButton}</button>
             </div>
           </form>

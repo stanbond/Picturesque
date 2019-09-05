@@ -451,25 +451,30 @@ function (_React$Component) {
           className: "login-form"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
           className: "errors"
-        }, errorsLi), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-          htmlFor: "username"
-        }, "Username"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        }, errorsLi), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "text",
           id: "username",
           value: this.state.username,
           onChange: this.update('username'),
-          className: "login-input"
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-          htmlFor: "password"
-        }, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          className: "login-input",
+          placeholder: "Phone number, username or email"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "password",
           id: "password",
           value: this.state.password,
           onChange: this.update('password'),
-          className: "login-input"
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "login-input",
+          placeholder: "Password"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "login-session-submit"
-        }, linkButton)))));
+        }, linkButton)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "have-an-acount"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "have-an-account-p"
+        }, "Don't have an account?", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/signup",
+          className: "signup-link"
+        }, " Sign up"))));
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "signup-form-container"
@@ -480,23 +485,21 @@ function (_React$Component) {
           className: "signup-form"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
           className: "errors"
-        }, errorsLi), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-          htmlFor: "username"
-        }, "Username"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        }, errorsLi), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "text",
           id: "username",
           value: this.state.username,
           onChange: this.update('username'),
-          className: "signup-input"
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-          htmlFor: "password"
-        }, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          className: "signup-input",
+          placeholder: "Username"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "password",
           id: "password",
           value: this.state.password,
           onChange: this.update('password'),
-          className: "signup-input"
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "signup-input",
+          placeholder: "Password"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "signup-session-submit"
         }, linkButton))));
       }
