@@ -16,9 +16,9 @@ const splash = ({currentUser, logout}) => {
           {/* <img src={logo} /> */}
           <h2 className="greeting-msg">Sign up to see photos and videos from your friends.</h2>
       <div className="signup-login-container"></div>
-        {/* <Link to="/login" className="login-link-button">
+        <Link to="/login" className="login-link-button">
           <button type="button" className="login-button">Log in</button>
-        </Link> */}
+        </Link>
       {/* </div> */}
       <div className="or-container">
         <div className="or-border"></div>
@@ -29,9 +29,9 @@ const splash = ({currentUser, logout}) => {
       <nav className="login-signup">
         <SignUpFormContainer />
           <div className="login-signup-container">
-            {/* <Link to="/signup"><button type="button" className="signup-button">
-              Sign Up!</button>
-            </Link> */}
+            <Link to="/signup"><button type="button" className="login-button">
+              Sign Up</button>
+            </Link>
           </div>
       </nav>
       
