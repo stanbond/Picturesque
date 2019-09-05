@@ -10,14 +10,15 @@ const splash = ({currentUser, logout}) => {
           <div className="iphone-img"></div>
         </div>
     </div>
-    <div className="splash_name_container">
-      <h1 className="ig">Picturesque</h1>
-      <h2 className="greeting-msg">Sign up to see photos and videos from your friends.</h2>
+    <div className="splash-content-container">
+        <div className="splash-content">
+          <h1 className="ig-logo">Picturesque</h1>
+          <h2 className="greeting-msg">Sign up to see photos and videos from your friends.</h2>
       <div className="signup-login-container"></div>
         <Link to="/login" className="login-link-button">
           <button type="button" className="login-button">Log in</button>
         </Link>
-
+      {/* </div> */}
       <div className="or-container">
         <div className="or-border"></div>
         <span className="or-txt">OR</span>
@@ -26,10 +27,16 @@ const splash = ({currentUser, logout}) => {
 
       <nav className="login-signup">
         <SignUpFormContainer />
+          <div className="login-signup-container">
+            <Link to="/signup"><button type="button" className="signup-button">
+              Sign Up!</button>
+            </Link>
+          </div>
       </nav>
-
+      
       <div>
-        <p className="p-terms">By signing up, you agree to our Terms, Data Policy and Cookies Policy</p>
+        <p className="terms">By signing up, you agree to our Terms, Data Policy and Cookies Policy</p>
+      </div>
       </div>
       <div className="have-an-account">
         <p className="have-an-account-p">Have an account?

@@ -1,5 +1,120 @@
 // Place all the styles related to the api/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-
+.iphone-image {
+   background-image: url(https://www.instagram.com/static/images/homepage/screenshot1.jpg/d6bf0c928b5a.jpg);
+    height: 422px;
+    width: 244px;
+    margin-left: 146px;
+    margin-top: 93px;
+    background-size: 244px 422px;
+}
+.ig-logo {
+    // logo go here 
+    display: flex;
+    font-size: 50px;
+    height: 51px;
+    width: 175px;
+    justify-content: center;
+    margin-top: 22px;
+    margin-left: 85px;
+    margin-right: 85px;
+    margin-bottom: 12px;
+}
+.splash-content-container {
+    justify-content: center;
+    margin-top: 12px;
+    max-width: 350px;
+    width: 100%;
+    height: calc(100% - 70px);
+}
+.splash-content {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #e6e6e6;
+    border-radius: 1px;
+    margin: 0 0 10px;
+    padding: 10px 0;
+    justify-content: center;
+    height: calc(100% - 200px);
+}
+.greeting-msg {
+    color: #999;
+    display: block;
+    text-align: center;
+    width: 268px;
+    height: 40px;
+    font-weight: 600;
+    line-height: 20px;
+    font-size: 17px;
+    margin: 0 40px 10px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+.signup-login-container {
+    display: flex;
+    justify-content: center;
+    width: 270px;
+}
+.login-button  {
+    position: relative;
+    display: block;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background-color: #3897f0;
+    border: 1px solid #3897f0;
+    border-radius: 4px; 
+    width: 268px;
+    height: 32px;
+    line-height: 18px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: inherit;
+}
+.login-link {
+    color: #3897f0;
+}
+.signup-link {
+    color: #3897f0;
+    font-weight: 600;
+}
+.signup-button {
+    position: relative;
+    color: #fff;
+    background-color: #3897f0;
+    border: 1px solid #3897f0;
+    border-radius: 4px;  
+}
+.or-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px 40px 18px;
+}
+.or-border {
+    background-color: #efefef;
+    position: relative;
+    height: 1px;
+    width: 106.09px;
+    top: .45em;
+}
+.or-txt {
+    color: #999;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0 18px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+.terms {
+    color: #999;
+    text-align: center;
+    font-size: 14px;
+    margin: 10px 60px;
+    line-height: 18px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
