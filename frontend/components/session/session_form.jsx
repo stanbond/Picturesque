@@ -36,44 +36,54 @@ class SessionForm extends React.Component {
 
     if (formType === 'login'){
       return ( 
-        <div className="login-page-container">
-          <div className="login-div">
-            <div className="ig-logo"></div>
-            <form onSubmit={this.handleSubmit} className="login-form-box">
-      
-              <div className="login-form">
-              
-                <ul className="errors">
-                  {errorsLi}
-                </ul>
-
-                <label></label>
-                <input 
-                  type="text" 
-                  id="username" 
-                  value={this.state.username} 
-                  onChange={this.update('username')} 
-                  className="login-input"
-                  placeholder="Phone number, username or email" />
-                <br></br>
-                <label></label>
-                <input 
-                  type="password" 
-                  id="password" 
-                  value={this.state.password} 
-                  onChange={this.update('password')} 
-                  className="login-input"
-                  placeholder="Password" />
-                <br></br>
-                <button className="login-button">{linkButton}</button>
-              </div>
-            </form>
-          </div>
+        <div className="main-box">
+          <div className="splash-content-container">
+            <div className="splash-content">
+              <div className="ig-logo"></div>
+              <div className="signup-login-container"></div>
+              <form onSubmit={this.handleSubmit} className="login-form-box">
         
-          <div className="have-an-acount">
-            <p className="have-an-account-p">Don't have an account?
-              <Link to="/" className="signup-link"> Sign up</Link>
-            </p>
+                <div className="signup-form-container">
+                <div className="signup-form">
+                  <ul className="errors">
+                    {errorsLi}
+                  </ul>
+
+                  <label></label>
+                  <input 
+                    type="text" 
+                    id="username" 
+                    value={this.state.username} 
+                    onChange={this.update('username')} 
+                    className="signup-input"
+                    placeholder="Phone number, username or email" />
+                  
+                  <label></label>
+                  <input 
+                    type="password" 
+                    id="password" 
+                    value={this.state.password} 
+                    onChange={this.update('password')} 
+                    className="signup-input"
+                    placeholder="Password" />
+                  
+                  <button className="login-button">{linkButton}</button>
+                </div>
+                </div>
+              </form>
+              <div className="or-container">
+                <div className="or-border"></div>
+                <span className="or-txt">OR</span>
+                <div className="or-border"></div>
+              </div>
+              <Link to="/" className="demo-link"> Demo Login</Link>
+            </div>
+          
+            <div className="have-an-account">
+              <p className="have-an-account-p">Don't have an account?
+                <Link to="/" className="signup-link"> Sign up</Link>
+              </p>
+            </div>
           </div>
         </div>
       );
@@ -104,7 +114,7 @@ class SessionForm extends React.Component {
                 value={this.state.fullname}
                 onChange={this.update('fullname')}
                 className="signup-input"
-                placeholder="Fullname" />
+                placeholder="Full Name" />
               
               <label></label>
               <input 

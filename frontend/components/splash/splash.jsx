@@ -17,7 +17,7 @@ const splash = ({currentUser, logout}) => {
           <h2 className="greeting-msg">Sign up to see photos and videos from your friends.</h2>
       <div className="signup-login-container"></div>
         <Link to="/login" className="login-link-button">
-          <button type="button" className="login-button">Log in</button>
+          <button type="button" className="login-button">Log in  |  Demo</button>
         </Link>
       {/* </div> */}
       <div className="or-container">

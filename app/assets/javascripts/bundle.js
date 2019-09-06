@@ -443,16 +443,22 @@ function (_React$Component) {
 
       if (formType === 'login') {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "login-page-container"
+          className: "main-box"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "login-div"
+          className: "splash-content-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "splash-content"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "ig-logo"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "signup-login-container"
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
           onSubmit: this.handleSubmit,
           className: "login-form-box"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "login-form"
+          className: "signup-form-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "signup-form"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
           className: "errors"
         }, errorsLi), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -460,25 +466,36 @@ function (_React$Component) {
           id: "username",
           value: this.state.username,
           onChange: this.update('username'),
-          className: "login-input",
+          className: "signup-input",
           placeholder: "Phone number, username or email"
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "password",
           id: "password",
           value: this.state.password,
           onChange: this.update('password'),
-          className: "login-input",
+          className: "signup-input",
           placeholder: "Password"
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "login-button"
         }, linkButton)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "have-an-acount"
+          className: "or-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "or-border"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "or-txt"
+        }, "OR"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "or-border"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/",
+          className: "demo-link"
+        }, " Demo Login")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "have-an-account"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "have-an-account-p"
         }, "Don't have an account?", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/",
           className: "signup-link"
-        }, " Sign up"))));
+        }, " Sign up")))));
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "signup-form-container"
@@ -502,7 +519,7 @@ function (_React$Component) {
           value: this.state.fullname,
           onChange: this.update('fullname'),
           className: "signup-input",
-          placeholder: "Fullname"
+          placeholder: "Full Name"
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "text",
           id: "username",
@@ -612,7 +629,7 @@ var splash = function splash(_ref) {
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       type: "button",
       className: "login-button"
-    }, "Log in")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, "Log in  |  Demo")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "or-container"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "or-border"
