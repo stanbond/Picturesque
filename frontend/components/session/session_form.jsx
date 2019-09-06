@@ -72,7 +72,7 @@ class SessionForm extends React.Component {
         
           <div className="have-an-acount">
             <p className="have-an-account-p">Don't have an account?
-              <Link to="/signup" className="signup-link"> Sign up</Link>
+              <Link to="/" className="signup-link"> Sign up</Link>
             </p>
           </div>
         </div>
@@ -96,7 +96,7 @@ class SessionForm extends React.Component {
                 onChange={this.update('email')}
                 className="signup-input"
                 placeholder="Mobile Number or Email" />
-              <br></br>
+              
               <label></label>
               <input
                 type="text"
@@ -105,7 +105,7 @@ class SessionForm extends React.Component {
                 onChange={this.update('fullname')}
                 className="signup-input"
                 placeholder="Fullname" />
-              <br></br>
+              
               <label></label>
               <input 
                 type="text" 
@@ -114,7 +114,7 @@ class SessionForm extends React.Component {
                 onChange={this.update('username')} 
                 className="signup-input"
                 placeholder="Username" />
-              <br></br>
+              
               <label></label>
               <input 
                 type="password" 
@@ -123,7 +123,7 @@ class SessionForm extends React.Component {
                 onChange={this.update('password')} 
                 className="signup-input"
                 placeholder="Password" />
-              <br></br>
+              
               <button className="login-button">{linkButton}</button>
             </div>
           </form>
