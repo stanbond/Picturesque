@@ -14,13 +14,13 @@ class Api::UsersController < ApplicationController
       if @user
         render :show
       else
-        render json: ['user unknown']
+        render json: ['user unknown'], status: 404
       end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:username, :email, :fullname, :bio, :password)
   end
 end

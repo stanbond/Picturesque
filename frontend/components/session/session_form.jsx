@@ -6,6 +6,8 @@ class SessionForm extends React.Component {
     super();
 
     this.state = {
+      email: '',
+      fullname: '',
       username: '',
       password: ''
     };
@@ -86,6 +88,24 @@ class SessionForm extends React.Component {
                 {errorsLi}
               </ul>
 
+              <label></label>
+              <input
+                type="text"
+                id="email"
+                value={this.state.email}
+                onChange={this.update('email')}
+                className="signup-input"
+                placeholder="Mobile Number or Email" />
+              <br></br>
+              <label></label>
+              <input
+                type="text"
+                id="fullname"
+                value={this.state.fullname}
+                onChange={this.update('fullname')}
+                className="signup-input"
+                placeholder="Fullname" />
+              <br></br>
               <label></label>
               <input 
                 type="text" 

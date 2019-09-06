@@ -404,6 +404,8 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SessionForm).call(this));
     _this.state = {
+      email: '',
+      fullname: '',
       username: '',
       password: ''
     };
@@ -488,6 +490,20 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
           className: "errors"
         }, errorsLi), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          id: "email",
+          value: this.state.email,
+          onChange: this.update('email'),
+          className: "signup-input",
+          placeholder: "Mobile Number or Email"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          id: "fullname",
+          value: this.state.fullname,
+          onChange: this.update('fullname'),
+          className: "signup-input",
+          placeholder: "Fullname"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "text",
           id: "username",
           value: this.state.username,
