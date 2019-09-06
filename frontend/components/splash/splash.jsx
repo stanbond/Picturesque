@@ -7,9 +7,11 @@ const splash = ({currentUser, logout}) => {
   const splashForm = () => (
     <div className="main-box">
       <div className="instagram-photo-container">
-        <div className="instagram-photo-holder">
-          <div className="iphone-img"></div>
-        </div>
+          <div className="iphone-img">
+          
+          <div className="splash2"></div>
+          </div>
+          <div className="splash1"></div>
     </div>
     <div className="splash-content-container">
         <div className="splash-content">

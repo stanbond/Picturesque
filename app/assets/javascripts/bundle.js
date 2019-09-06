@@ -606,10 +606,12 @@ var splash = function splash(_ref) {
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "instagram-photo-container"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "instagram-photo-holder"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "iphone-img"
-    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "splash2"
+    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "splash1"
+    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "splash-content-container"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "splash-content"
