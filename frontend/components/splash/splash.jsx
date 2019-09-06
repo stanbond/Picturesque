@@ -45,6 +45,12 @@ const splash = ({currentUser, logout}) => {
         </p>
       </div>
     </div>
+    
+      {/* <div className="footer">
+        <a href="https://github.com/stanbond">GITHUB</a>
+        <a href="https://www.linkedin.com/in/stanbondarenko/">LINKEDIN</a>
+        <p>@2019 PICTURESQUE</p>
+      </div> */}
     </div>
   )
   return splashForm();
