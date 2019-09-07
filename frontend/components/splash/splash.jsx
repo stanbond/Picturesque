@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SignUpFormContainer from '../session/signup_form_container';
-// import logo from './logo.jpg';
 
 const splash = ({currentUser, logout}) => {
   const splashForm = () => (

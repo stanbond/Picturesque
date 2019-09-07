@@ -594,7 +594,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_signup_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../session/signup_form_container */ "./frontend/components/session/signup_form_container.js");
 
 
- // import logo from './logo.jpg';
+
 
 var splash = function splash(_ref) {
   var currentUser = _ref.currentUser,
