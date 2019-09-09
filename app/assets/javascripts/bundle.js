@@ -606,8 +606,6 @@ var splash = function splash(_ref) {
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "instagram-photo-container"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "iphone-img"
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "splash1"
     }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "splash2"
@@ -622,7 +620,7 @@ var splash = function splash(_ref) {
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "ig-logo"
     }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-      className: "greeting-msg"
+      className: "signup-msg"
     }, "Sign up to see photos and videos from your friends."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "signup-login-container"
     }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
