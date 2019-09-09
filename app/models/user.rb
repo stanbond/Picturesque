@@ -21,6 +21,10 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
   attr_reader :password 
 
+  has_many :posts
+  # has_many :comments
+  # has_many :likes
+
   def is_password?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end
