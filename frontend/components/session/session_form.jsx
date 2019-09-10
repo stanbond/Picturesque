@@ -19,7 +19,6 @@ class SessionForm extends React.Component {
     event.preventDefault();
     const user = Object.assign({}, this.state);  // {user: {username, password}}
     this.props.processForm(user).then(() => { 
-      debugger
       this.props.history.push('/home')
     });
   }

@@ -9,9 +9,7 @@ const postsReducer = (state={}, action) => {
 
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
-      // debugger
       if (action.payload) { 
-        // debugger
         return Object.assign({}, state, action.payload.posts)
       } else {
         return state
