@@ -1,4 +1,5 @@
 import React from 'react';
+import NavBarContainer from '../nav_bar/nav_bar_container';
 
 class PostIndex extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class PostIndex extends React.Component {
   render() {
     
     return (
-      <p> hello world </p>
+      <NavBarContainer />
     )
   }
 }
