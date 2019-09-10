@@ -52,8 +52,8 @@ group :development do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'annotate'
-  gem 'jquery-rails', '2.1.4'
-  gem 'jquery-ui-rails', '4.2.1'
+  gem 'jquery-rails'
+  gem 'jquery-ui-rails'
 end
 
 group :test do
