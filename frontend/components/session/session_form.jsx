@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router'
 
 class SessionForm extends React.Component {
   constructor() {
@@ -17,7 +18,10 @@ class SessionForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const user = Object.assign({}, this.state);  // {user: {username, password}}
-    this.props.processForm(user);
+    this.props.processForm(user).then(() => { 
+      debugger
+      this.props.history.push('/home')
+    });
   }
 
   update(field) {
@@ -143,4 +147,4 @@ class SessionForm extends React.Component {
   }
 }
 
-export default SessionForm;
+export default withRouter(SessionForm);
