@@ -78,6 +78,7 @@
     font-size: 14px;
     font-weight: 600;
     margin: 15px;
+    cursor: pointer;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 }
 .signup-input {
@@ -132,13 +133,13 @@
     image-rendering: pixelated;
 }
 .splash1,.splash2,.splash3,.splash4,.splash5 {
-  position: absolute;
+    position: absolute;
     width: 465px;
     height: 605px;
     margin: 90px 100px 100px 142px;
     display: flex;
     justify-content: center;
-  image-rendering: optimizeQuality;
+    image-rendering: optimizeQuality;
 }
 .splash1 {
     background: image-url("splash1.jpg") no-repeat;

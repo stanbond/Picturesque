@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router'
 
 class SessionForm extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       email: '',
@@ -13,6 +13,7 @@ class SessionForm extends React.Component {
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
   }
 
   handleSubmit(event) {
@@ -21,6 +22,17 @@ class SessionForm extends React.Component {
     this.props.processForm(user).then(() => { 
       this.props.history.push('/home')
     });
+  }
+
+  handleDemo(event) {
+    event.preventDefault();
+    let user = {
+      email: "batman@picturesque.com",
+      fullname: "Bruce Wayne",
+      username: "bruce_wayne",
+      password: "password"
+    };
+    this.props.processDemo(user);
   }
 
   update(field) {
@@ -79,7 +91,7 @@ class SessionForm extends React.Component {
                 <span className="or-txt">OR</span>
                 <div className="or-border"></div>
               </div>
-              <Link to="/" className="demo-link"> Demo Login</Link>
+              <p onClick={this.handleDemo} className="demo-link"> Demo Login </p>
             </div>
           
             <div className="have-an-account">

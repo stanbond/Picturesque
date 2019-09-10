@@ -510,6 +510,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
   return {
     processForm: function processForm(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["login"])(user));
+    },
+    processDemo: function processDemo(user) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["login"])(user));
     }
   };
 };
@@ -560,12 +563,12 @@ var SessionForm =
 function (_React$Component) {
   _inherits(SessionForm, _React$Component);
 
-  function SessionForm() {
+  function SessionForm(props) {
     var _this;
 
     _classCallCheck(this, SessionForm);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(SessionForm).call(this));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SessionForm).call(this, props));
     _this.state = {
       email: '',
       fullname: '',
@@ -573,6 +576,7 @@ function (_React$Component) {
       password: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleDemo = _this.handleDemo.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -587,6 +591,18 @@ function (_React$Component) {
       this.props.processForm(user).then(function () {
         _this2.props.history.push('/home');
       });
+    }
+  }, {
+    key: "handleDemo",
+    value: function handleDemo(event) {
+      event.preventDefault();
+      var user = {
+        email: "batman@picturesque.com",
+        fullname: "Bruce Wayne",
+        username: "bruce_wayne",
+        password: "password"
+      };
+      this.props.processDemo(user);
     }
   }, {
     key: "update",
@@ -652,10 +668,10 @@ function (_React$Component) {
           className: "or-txt"
         }, "OR"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "or-border"
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          to: "/",
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          onClick: this.handleDemo,
           className: "demo-link"
-        }, " Demo Login")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, " Demo Login ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "have-an-account"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "have-an-account-p"
