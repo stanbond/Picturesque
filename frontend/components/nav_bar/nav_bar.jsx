@@ -19,11 +19,9 @@ class NavBar extends React.Component {
     return (
       <div id="navbar" className="main-navbar">
         <div className="sub-navbar">
-          <div className="nav-idx">
-            <Link to="/home">
+          <div className="logo-box">
               <div className="nav-ig-icon"></div>
               <div className="nav-ig-logo"></div>
-            </Link>
           </div>
           {/* search bar container will go here */}
           <div className="navbar-menu">

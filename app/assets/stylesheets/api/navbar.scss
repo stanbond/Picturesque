@@ -1,0 +1,49 @@
+.main-navbar {
+    display: flex;
+    background: white;
+    border-bottom: 1px solid rgb(235, 235, 235); 
+    flex-direction: row; 
+    justify-content: space-around;
+    align-items: flex-end;
+    position: sticky;
+    top: 0px;
+    height: 75px;
+    min-width: 800px;
+    z-index: 5;
+}
+.sub-navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    width: 85%; 
+}
+.logo-box {
+    display: flex; 
+    justify-content: center;
+    align-content: center;
+    margin-top: 30px;
+    margin-bottom: 25px;
+    margin-right: 50%;
+}
+.nav-ig-icon {
+    background: image-url("ig-icon.png") no-repeat;
+    display: flex;
+    background-size: contain;
+    height: 25px;
+    width: 25px;
+    padding-right: 10%;
+    border-right: 1px solid black;
+}
+.nav-ig-logo {
+    background: image-url("logo.jpg") no-repeat;
+    display: flex;
+    background-size: contain;
+    height: 45px;
+    width: 170px;
+    margin-left: 5%;
+    // margin-top: 25px;
+    // padding-left: 17px;
+    // border-left: 1px solid black;
+}

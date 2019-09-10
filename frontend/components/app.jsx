@@ -10,7 +10,7 @@ import PostIndexContainer from '../components/posts/post_index_container';
 
 const App = () => (
   <div>
-      <GreetingContainer /> 
+    <GreetingContainer /> 
     
     <AuthRoute exact path='/' component={SplashContainer} />
     <AuthRoute path="/login" component={LoginFormContainer} />
