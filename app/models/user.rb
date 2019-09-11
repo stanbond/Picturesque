@@ -22,6 +22,7 @@ class User < ApplicationRecord
   attr_reader :password 
 
   has_many :posts
+  has_one_attached :profile_photo
   # has_many :comments
   # has_many :likes
 

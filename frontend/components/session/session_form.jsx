@@ -71,7 +71,7 @@ class SessionForm extends React.Component {
                     value={this.state.username} 
                     onChange={this.update('username')} 
                     className="signup-input"
-                    placeholder="Phone number, username or email" />
+                    placeholder="Username" />
                   
                   <label></label>
                   <input 
