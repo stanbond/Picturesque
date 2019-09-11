@@ -11,9 +11,17 @@ class PostIndex extends React.Component {
   }
 
   render() {
-    
+    let { posts } = this.props;
     return (
-      <NavBarContainer />
+      <>
+        <NavBarContainer />
+        <div className="feed">
+          {/* { posts.map( (post) => {
+            let user = this.props.users[post.user_id];
+            return user
+          })} */}
+        </div>
+      </>
     )
   }
 }

@@ -15,10 +15,10 @@ class NavBar extends React.Component {
     return (
       <div id="navbar" className="main-navbar">
         <div className="sub-navbar">
-          <div className="logo-box">
+          <Link className="logo-box" to="/home">
               <div className="nav-ig-icon"></div>
               <div className="nav-ig-logo"></div>
-          </div>
+          </Link>
           {/* search bar container will go here */}
           <div className="navbar-menu">
             <div className="create-post-button" onClick={this.handleCreate}></div>

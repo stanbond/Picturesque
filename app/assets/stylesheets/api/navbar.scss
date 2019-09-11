@@ -54,10 +54,10 @@
 }
 .create-post-button, .profile-button, .logout-button {
     cursor: pointer;
-    width: 21px;
+    width: 22px;
     height: 21px;
     margin-right: 30px;
-    // image-rendering: optimizeQuality;
+    image-rendering: optimizeQuality;
 }
 .create-post-button {
     background: image-url("create_post.png") no-repeat;
