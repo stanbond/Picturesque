@@ -9,7 +9,7 @@ class Greeting extends React.Component {
       return (
         <div>
           <p>Welcome, {currentUser.username}</p>
-          <button onClick={logout}>Logout</button>
+          {/* <button onClick={logout}>Logout</button> */}
 
         </div>
       )

@@ -307,9 +307,7 @@ function (_React$Component) {
           logout = _this$props.logout;
 
       if (currentUser) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Welcome, ", currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          onClick: logout
-        }, "Logout"));
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Welcome, ", currentUser.username));
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null));
       }
@@ -379,9 +377,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -396,13 +394,9 @@ function (_React$Component) {
   _inherits(NavBar, _React$Component);
 
   function NavBar(props) {
-    var _this;
-
     _classCallCheck(this, NavBar);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(NavBar).call(this, props));
-    _this.handleLogout = _this.handleLogout.bind(_assertThisInitialized(_this));
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(NavBar).call(this, props));
   }
 
   _createClass(NavBar, [{
@@ -411,13 +405,9 @@ function (_React$Component) {
       document.getElementById('postform').className = 'show';
     }
   }, {
-    key: "handleLogout",
-    value: function handleLogout() {
-      this.props.logout();
-    }
-  }, {
     key: "render",
     value: function render() {
+      var logout = this.props.logout;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "navbar",
         className: "main-navbar"
@@ -438,7 +428,7 @@ function (_React$Component) {
         className: "profile-button"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "logout-button",
-        onClick: this.handleLogout
+        onClick: logout
       }))));
     }
   }]);
@@ -461,31 +451,23 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _nav_bar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./nav_bar */ "./frontend/components/nav_bar/nav_bar.jsx");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
 
 
 
 var mapStateToProps = function mapStateToProps(state) {
-  var user = state.entities.users[state.session.currentUserId];
+  var currentUser = state.entities.users[state.session.id];
   return {
-    user: user
+    currentUser: currentUser
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    logout: function (_logout) {
-      function logout() {
-        return _logout.apply(this, arguments);
-      }
-
-      logout.toString = function () {
-        return _logout.toString();
-      };
-
-      return logout;
-    }(function () {
-      return dispatch(logout());
-    })
+    logout: function logout() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["logout"])());
+    }
   };
 };
 

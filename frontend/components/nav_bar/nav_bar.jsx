@@ -4,18 +4,14 @@ import { Link } from 'react-router-dom';
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
-    this.handleLogout = this.handleLogout.bind(this);
   }
 
   handleCreate() {
     document.getElementById('postform').className = 'show';
   }
 
-  handleLogout() {
-    this.props.logout();
-  }
-
   render() {
+    let { logout } = this.props;
     return (
       <div id="navbar" className="main-navbar">
         <div className="sub-navbar">
@@ -27,7 +23,7 @@ class NavBar extends React.Component {
           <div className="navbar-menu">
             <div className="create-post-button" onClick={this.handleCreate}></div>
             <div className="profile-button"></div>
-            <div className="logout-button" onClick={this.handleLogout}></div>
+            <div className="logout-button" onClick={logout}></div>
           </div>
         </div>
       </div>
