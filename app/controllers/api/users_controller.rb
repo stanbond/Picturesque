@@ -1,7 +1,7 @@
 class Api::UsersController < ApplicationController
+
   def create
     @posts = []
-    
     @user = User.new(user_params)
     if @user.save
       login(@user)
@@ -12,9 +12,8 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @posts = Post.find_by(user_id: params[:id])
-    
-    @user = User.find_by(id: params[:id])
+    @user = User.where(id: params[:id]).includes(:post)[0]
+    @posts = @user.posts.with_attached_photo
       if @user
         render :show
       else

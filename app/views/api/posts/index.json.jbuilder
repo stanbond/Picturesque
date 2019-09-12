@@ -6,10 +6,10 @@ json.posts do
   end
 end
 # posts: { 1: {id: 1, name: ‘test’, body: ‘hello’} }
-# json.users do
-#   @users.each do |user|
-#     json.set! user.id do
-#       json.partial!('/api/users/user', user: user)
-#     end
-#   end
-# end
+json.users do
+  @users.each do |user|
+    json.set! user.id do
+      json.partial!('/api/users/user', user: user)
+    end
+  end
+end

@@ -8,7 +8,6 @@ class Api::SessionsController < ApplicationController
     if @user
       login(@user)
       @posts = @user.posts
-      
       render 'api/users/show'
     else
       render json: ['Wrong credentials!'], status: 401

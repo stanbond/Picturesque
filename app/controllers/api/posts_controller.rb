@@ -12,8 +12,8 @@ class Api::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
-    @user = User.find(@post.user_id)
+    @post = Post.with_attached_photo.includes(:user).where(id: params[:id])[0]
+    # @user = User.find(@post.user_id)
     if @post
       render :show
     else
@@ -30,7 +30,13 @@ class Api::PostsController < ApplicationController
   # end
 
   def index
-    @posts = Post.all
+    @posts = Post.all.includes(:user).with_attached_photo
+    @users = []
+
+    @posts.each do |post|
+      @users << post.user
+    end
+    
     render :index 
   end
 
