@@ -24,15 +24,33 @@ class SessionForm extends React.Component {
     });
   }
 
-  handleDemo(event) {
+  async handleDemo(event) {
     event.preventDefault();
     let user = {
-      email: "batman@picturesque.com",
-      fullname: "Bruce Wayne",
+      // email: "batman@picturesque.com",
+      // fullname: "Bruce Wayne",
       username: "bruce_wayne",
       password: "password"
     };
-    this.props.processDemo(user);
+    const sleep = ms => new Promise(res => setTimeout(res, ms));
+
+    document.getElementById('username-input').focus();
+    for (let i = 1; i <= user.username.length; i++) {
+      this.setState({ username: user.username.substr(0, i) });
+      await sleep(175);
+    }
+
+    await sleep(175);
+
+    document.getElementById('password-input').focus();
+    for (let i = 1; i <= user.password.length; i++) {
+      this.setState({ password: user.password.substr(0, i) });
+      await sleep(150);
+    }
+
+    await sleep(200);
+
+    document.getElementById('session-submit-btn').click();
   }
 
   update(field) {
@@ -71,7 +89,7 @@ class SessionForm extends React.Component {
                   <label></label>
                   <input 
                     type="text" 
-                    id="username" 
+                    id="username-input" 
                     value={this.state.username} 
                     onChange={this.update('username')} 
                     className="signup-input"
@@ -80,13 +98,13 @@ class SessionForm extends React.Component {
                   <label></label>
                   <input 
                     type="password" 
-                    id="password" 
+                    id="password-input" 
                     value={this.state.password} 
                     onChange={this.update('password')} 
                     className="signup-input"
                     placeholder="Password" />
                   
-                  <button className="login-button">{linkButton}</button>
+                    <button id="session-submit-btn" className="login-button">{linkButton}</button>
                 </div>
                 </div>
               </form>
