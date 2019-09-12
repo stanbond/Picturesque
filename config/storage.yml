@@ -7,25 +7,19 @@ local:
   root: <%= Rails.root.join("storage") %>
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
-# amazon:
-#   service: S3
-#   access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
-#   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
-#   region: us-east-1
-#   bucket: your_own_bucket
-
 amazon_dev:
   service: S3
-  access_key_id: <%= Rails.application.credentials.aws[:AKIAW5XY2S5QKXNZXEX5] %>
-  secret_access_key: <%= Rails.application.credentials.aws[:7ZvrcQZqYpx5Du1kGeyjMqJoIRg/Or20z0U8P6CM] %>
-  region: <%= Rails.application.credentials.aws[:ca-central-1] %>
-  bucket: <%= Rails.application.credentials.aws[:dev][:bucket] %>
+  access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
+  secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
+  region: ca-central-1
+  bucket: picturesque-app-dev
 
 amazon_prod:
-  sAKIAW5XY2S5QKXNZXEX5: <%= Rails.application.credentials.aws[:AKIAW5XY2S5QKXNZXEX5] %>
-  secret_access_key: <%= Rails.application.credentials.aws[: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] %>
-  region: <%= Rails.application.credentials.aws[:ca-central-1] %>
-  bucket: <%= Rails.application.credentials.aws[:prod][:bucket] %>
+  service: S3
+  access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
+  secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
+  region: ca-central-1
+  bucket: picturesque-app-pro
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
