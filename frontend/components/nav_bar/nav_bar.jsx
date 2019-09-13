@@ -23,7 +23,9 @@ class NavBar extends React.Component {
           {/* search bar container will go here */}
           <div className="navbar-menu">
             <div className="create-post-button" onClick={this.handleCreate}></div>
-            <div className="profile-button"></div>
+            <Link className="profile-button" to={`/profile/${this.props.currentUser.id}`}></Link>
+              {/* <Link to={`/profile/${this.props.currentUser.id}`}></Link> */}
+            {/* </div> */}
             <div className="logout-button" onClick={logout}></div>
           </div>
         </div>

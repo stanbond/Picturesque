@@ -1,5 +1,7 @@
 import React from 'react';
 import NavBarContainer from '../nav_bar/nav_bar_container';
+import { withRouter } from 'react-router-dom';
+import ProfilePostItem from './profile_post_item';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -16,15 +18,32 @@ class Profile extends React.Component {
     return (
       <>
       <NavBarContainer/>
-      <div className="profile-header">
-        {/* <img src={user.profilePhoto} /> */}
-          <h2>{user.username}</h2>
-          <p><strong>{user.postIds.length}</strong>posts</p>
-          <p>{user.bio}</p>
-      </div>
+        <section className="profile-header">
+          <img src={user.profilePhoto} />
+          <div>
+            <h2>{user.username}</h2>
+            <p><strong>{user.postIds.length}</strong>posts</p>
+            <p>{user.bio}</p>
+          </div>
+        </section>
+        <div className="profile-posts">
+          <div className="profile-menu">
+            <div className="posts">
+              <p>POSTS</p>
+            </div>
+          </div>
+          <div className="posts-grid">
+            {this.props.posts.map((post, idx) => {
+              <ProfilePostItem
+                key={idx}
+                post={post} />;
+            })} 
+          </div>
+        </div>
+        {/* <CreatePostFormContainer /> */}
       </>
     );
   }
 
 }
-export default Profile;
+export default withRouter(Profile);

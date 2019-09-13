@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
       id => state.entities.posts[id]
     );
   } else {
-    posts = [];
+    posts = [ undefined ];
   }
 
   return ({

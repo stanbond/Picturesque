@@ -7,6 +7,8 @@ import { Route } from 'react-router-dom';
 import { Switch } from 'react-router-dom';
 import SplashContainer from './splash/splash_container';
 import PostIndexContainer from '../components/posts/post_index_container';
+import ProfileContainer from './profile/profile_container';
+
 
 const App = () => (
   <div>
@@ -18,6 +20,7 @@ const App = () => (
 
     <Switch>
       <ProtectedRoute path='/home' component={PostIndexContainer}/>
+      <ProtectedRoute path='/profile/:id' component={ProfileContainer} />
     </Switch>
   </div>
 );

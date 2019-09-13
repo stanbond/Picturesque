@@ -5,7 +5,6 @@ class PostIndexItem extends React.Component {
 
   constructor(props) {
     super(props);
-
     // this.handleDelete = this.handleDelete.bind(this);
   }
 
@@ -25,21 +24,22 @@ class PostIndexItem extends React.Component {
       );
   }
   
-
   render() {
     return (
       <>
-      <div className="post-item">
-        <div className="post-header">
-            <Link to={`/profile/${this.props.user.id}`}>
-              <img src={this.props.user.profilePhoto} />
-            </Link>
-        </div>
-        <div className="user-info">
-          <p>{this.props.user.username}</p>
-            {/* link to profile */}
-          <p className="location ">{this.props.post.location}</p>
-        </div>
+      <div className="post">
+        <header>
+          <div className="post-header">
+              <Link to={`/profile/${this.props.user.id}`}>
+                <img src={this.props.user.profilePhoto} />
+              </Link>
+          </div>
+          <div>
+              <p className="username">{this.props.user.username}</p>
+              {/* link to profile */}
+            <p className="location ">{this.props.post.location}</p>
+          </div>
+        </header>
         {/* <div placeholder={"delete"}>{this.handleDelete}</div> */}
         <div className="post-img">
             <img src={this.props.post.photoUrl}/>
