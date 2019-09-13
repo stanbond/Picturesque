@@ -3,5 +3,5 @@ json.post do
 end
 
 json.user do
-  json.partial!('/api/users/user', user: @user)
+  json.partial!('/api/users/user', user: @post.user)
 end

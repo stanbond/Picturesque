@@ -90,20 +90,23 @@
 /*!******************************************!*\
   !*** ./frontend/actions/post_actions.js ***!
   \******************************************/
-/*! exports provided: RECEIVE_ALL_POSTS, RECEIVE_POST, fetchAllPosts, fetchPost, createPost */
+/*! exports provided: RECEIVE_ALL_POSTS, RECEIVE_POST, REMOVE_POST, fetchAllPosts, fetchPost, createPost, removePost */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_POSTS", function() { return RECEIVE_ALL_POSTS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_POST", function() { return RECEIVE_POST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_POST", function() { return REMOVE_POST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllPosts", function() { return fetchAllPosts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPost", function() { return fetchPost; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPost", function() { return createPost; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removePost", function() { return removePost; });
 /* harmony import */ var _util_post_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/post_api_util */ "./frontend/util/post_api_util.js");
 
 var RECEIVE_ALL_POSTS = 'RECEIVE_ALL_POSTS';
 var RECEIVE_POST = 'RECEIVE_POST';
+var REMOVE_POST = 'REMOVE_POST';
 
 var receiveAllPosts = function receiveAllPosts(payload) {
   return {
@@ -119,30 +122,38 @@ var receivePost = function receivePost(payload) {
   };
 };
 
+var deletePost = function deletePost(post) {
+  return {
+    type: REMOVE_POST,
+    post: post
+  };
+};
+
 var fetchAllPosts = function fetchAllPosts() {
   return function (dispatch) {
     return _util_post_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchPosts"]().then(function (posts) {
       return dispatch(receiveAllPosts(posts));
-    }).fail(function (res) {
-      return dispatch(receivePostErrors(res.responseJSON));
-    });
+    }); // .fail(res => dispatch(receivePostErrors(res.responseJSON)));
   };
 };
 var fetchPost = function fetchPost(id) {
   return function (dispatch) {
     return _util_post_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchPost"](id).then(function (payload) {
       return dispatch(receivePost(payload));
-    }).fail(function (res) {
-      return dispatch(receivePostErrors(res.responseJSON));
-    });
+    }); // .fail(res => dispatch(receivePostErrors(res.responseJSON)));
   };
 };
 var createPost = function createPost(post) {
   return function (dispatch) {
     return _util_post_api_util__WEBPACK_IMPORTED_MODULE_0__["createPost"](post).then(function (newPost) {
       return dispatch(receivePost(newPost));
-    }).fail(function (res) {
-      return dispatch(receivePostErrors(res.responseJSON));
+    }); // .fail(res => dispatch(receivePostErrors(res.responseJSON)));
+  };
+};
+var removePost = function removePost(post) {
+  return function (dispatch) {
+    return _util_post_api_util__WEBPACK_IMPORTED_MODULE_0__["deletePost"](post.id).then(function () {
+      return dispatch(deletePost(post));
     });
   };
 };
@@ -460,6 +471,7 @@ function (_React$Component) {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(NavBar, [{
     key: "handleCreate",
     value: function handleCreate() {
+      // debugger
       document.getElementById('postform').className = 'show';
     }
   }, {
@@ -534,6 +546,252 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/post_form/post_form.jsx":
+/*!*****************************************************!*\
+  !*** ./frontend/components/post_form/post_form.jsx ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
+
+
+
+
+
+
+
+
+
+var PostForm =
+/*#__PURE__*/
+function (_React$Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6___default()(PostForm, _React$Component);
+
+  function PostForm(props) {
+    var _this;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, PostForm);
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default()(PostForm).call(this, props));
+    _this.state = _this.props.post;
+    _this.handleInput = _this.handleInput.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this));
+    _this.handlePhoto = _this.handlePhoto.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this));
+    _this.renderSumbit = _this.renderSumbit.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this));
+    _this.closeModal = _this.closeModal.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this));
+    return _this;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(PostForm, [{
+    key: "handlePhoto",
+    value: function handlePhoto(event) {
+      var _this2 = this;
+
+      var file = event.target.files[0];
+      var fileReader = new FileReader();
+
+      fileReader.onloadend = function () {
+        _this2.setState({
+          photo: file,
+          preview: fileReader.result
+        });
+      };
+
+      if (file) {
+        fileReader.readAsDataURL(file);
+      }
+    }
+  }, {
+    key: "handleInput",
+    value: function handleInput(type) {
+      var _this3 = this;
+
+      return function (e) {
+        _this3.setState(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, type, e.target.value));
+      };
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(event) {
+      var _this4 = this;
+
+      event.preventDefault();
+      var button = event.target;
+      var parent = button.parentElement;
+      var loader = document.createElement('p');
+      loader.innerText = 'posting';
+      loader.classList.add('dummy-submit-button');
+      parent.removeChild(button);
+      parent.appendChild(loader);
+      var formData = new FormData(); // const filledForm = append(formData, { 'post[location]': this.state.location} );
+
+      formData.append('post[location]', this.state.location);
+      formData.append('post[caption]', this.state.caption);
+      formData.append('post[photo]', this.state.photo);
+      this.props.action(formData).then(function () {
+        _this4.setState({
+          location: '',
+          caption: '',
+          photo: null,
+          preview: null
+        });
+
+        document.getElementById('postform').className = 'hide';
+      });
+    }
+  }, {
+    key: "closeModal",
+    value: function closeModal() {
+      this.setState({
+        location: '',
+        caption: '',
+        photo: null,
+        preview: null
+      });
+      document.getElementById('postform').className = 'hide';
+    }
+  }, {
+    key: "renderSumbit",
+    value: function renderSumbit() {
+      if (this.state.caption === '') {
+        return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", {
+          className: "dummy-submit-button"
+        }, "Post"));
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", {
+          onClick: this.handleSubmit,
+          className: "submit-button"
+        }, "Post"));
+      }
+    }
+  }, {
+    key: "renderForm",
+    value: function renderForm() {
+      var errors = this.props.errors ? react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("ul", {
+        className: "errors"
+      }, this.props.errors.map(function (err, idx) {
+        return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("li", {
+          key: idx
+        }, err);
+      })) : react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_7___default.a.Fragment, null);
+
+      if (this.state.photo === null) {
+        return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "upload-window"
+        }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h3", null, "Upload a Photo"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "upload-msg"
+        }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", null, "Share photos that you'd like your friends to see")), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", null, "Upload"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
+          type: "file",
+          accept: "image/*",
+          onChange: this.handlePhoto
+        })));
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "upload-window"
+        }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "upload-form"
+        }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "preview"
+        }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("img", {
+          src: this.state.preview
+        })), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "user-inputs"
+        }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", {
+          className: "title"
+        }, "New Picturesque Post"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", {
+          className: "subtitle"
+        }, "Details"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("textarea", {
+          value: this.state.caption,
+          placeholder: "Write a caption...",
+          onChange: this.handleInput('caption')
+        }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
+          type: "text",
+          value: this.state.location,
+          placeholder: "Add location",
+          onChange: this.handleInput('location')
+        }), this.renderSumbit(), errors)));
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        id: "postform",
+        className: "hide"
+      }, this.renderForm(), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        className: "modal-screen",
+        onClick: this.closeModal
+      }));
+    }
+  }]);
+
+  return PostForm;
+}(react__WEBPACK_IMPORTED_MODULE_7___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (PostForm);
+
+/***/ }),
+
+/***/ "./frontend/components/post_form/post_form_container.js":
+/*!**************************************************************!*\
+  !*** ./frontend/components/post_form/post_form_container.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _post_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./post_form */ "./frontend/components/post_form/post_form.jsx");
+/* harmony import */ var _actions_post_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/post_actions */ "./frontend/actions/post_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    errors: state.errors.posts,
+    post: {
+      location: '',
+      caption: '',
+      photo: null,
+      preview: null
+    }
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    action: function action(post) {
+      return dispatch(Object(_actions_post_actions__WEBPACK_IMPORTED_MODULE_2__["createPost"])(post));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_post_form__WEBPACK_IMPORTED_MODULE_1__["default"])));
+
+/***/ }),
+
 /***/ "./frontend/components/posts/post_index.jsx":
 /*!**************************************************!*\
   !*** ./frontend/components/posts/post_index.jsx ***!
@@ -556,6 +814,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../nav_bar/nav_bar_container */ "./frontend/components/nav_bar/nav_bar_container.js");
+/* harmony import */ var _post_index_item_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./post_index_item_container */ "./frontend/components/posts/post_index_item_container.js");
+/* harmony import */ var _post_form_post_form_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../post_form/post_form_container */ "./frontend/components/post_form/post_form_container.js");
+
+
 
 
 
@@ -583,10 +845,19 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var posts = this.props.posts;
+      var _this = this;
+
+      var posts = Object.values(this.props.posts);
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_5___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "feed"
-      }));
+      }, posts.map(function (post, idx) {
+        var user = _this.props.users[post.user_id];
+        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_post_index_item_container__WEBPACK_IMPORTED_MODULE_7__["default"], {
+          key: idx,
+          user: user,
+          post: post
+        });
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_post_form_post_form_container__WEBPACK_IMPORTED_MODULE_8__["default"], null));
     }
   }]);
 
@@ -629,6 +900,119 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(_post_index__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/posts/post_index_item.jsx":
+/*!*******************************************************!*\
+  !*** ./frontend/components/posts/post_index_item.jsx ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+
+
+
+
+var PostIndexItem =
+/*#__PURE__*/
+function (_React$Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(PostIndexItem, _React$Component);
+
+  function PostIndexItem(props) {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, PostIndexItem);
+
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(PostIndexItem).call(this, props)); // this.handleDelete = this.handleDelete.bind(this);
+  } // handleDelete() {
+  //   let {
+  //     deletePost } = this.props;
+  //   deletePost(post)
+  // }
+
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(PostIndexItem, [{
+    key: "renderCaption",
+    value: function renderCaption() {
+      var caption = this.props.post.caption;
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("strong", null, this.props.user.username, " "), caption);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_5___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "post-item"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "post-header"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
+        to: "/profile/".concat(this.props.user.id)
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
+        src: this.props.user.profilePhoto
+      }))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "user-info"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, this.props.user.username), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", {
+        className: "location "
+      }, this.props.post.location)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "post-img"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
+        src: this.props.post.photoUrl
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "post-bottom"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "caption"
+      }, this.renderCaption()))));
+    }
+  }]);
+
+  return PostIndexItem;
+}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (PostIndexItem);
+
+/***/ }),
+
+/***/ "./frontend/components/posts/post_index_item_container.js":
+/*!****************************************************************!*\
+  !*** ./frontend/components/posts/post_index_item_container.js ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _post_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./post_index_item */ "./frontend/components/posts/post_index_item.jsx");
+/* harmony import */ var _actions_post_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/post_actions */ "./frontend/actions/post_actions.js");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {};
+}; // const mapDispatchToProps = dispatch => ({
+//   deletePost: post => dispatch(removePost(post))
+// }); 
+
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps)(_post_index_item__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -918,14 +1302,14 @@ function (_React$Component) {
           className: "signup-form"
         }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("ul", {
           className: "errors"
-        }, errorsLi), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", null), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
+        }, errorsLi), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
           type: "text",
           id: "username-input",
           value: this.state.username,
           onChange: this.update('username'),
           className: "signup-input",
           placeholder: "Username"
-        }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", null), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
+        }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
           type: "password",
           id: "password-input",
           value: this.state.password,
@@ -964,28 +1348,28 @@ function (_React$Component) {
           className: "signup-form"
         }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("ul", {
           className: "errors"
-        }, errorsLi), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", null), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
+        }, errorsLi), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
           type: "text",
           id: "email",
           value: this.state.email,
           onChange: this.update('email'),
           className: "signup-input",
           placeholder: "Mobile Number or Email"
-        }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", null), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
+        }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
           type: "text",
           id: "fullname",
           value: this.state.fullname,
           onChange: this.update('fullname'),
           className: "signup-input",
           placeholder: "Full Name"
-        }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", null), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
+        }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
           type: "text",
           id: "username",
           value: this.state.username,
           onChange: this.update('username'),
           className: "signup-input",
           placeholder: "Username"
-        }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", null), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
+        }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
           type: "password",
           id: "password",
           value: this.state.password,
@@ -1292,6 +1676,10 @@ var postsReducer = function postsReducer() {
     case _actions_post_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_POST"]:
       return Object.assign({}, state, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, action.payload.post.id, action.payload.post));
 
+    case _actions_post_actions__WEBPACK_IMPORTED_MODULE_1__["REMOVE_POST"]:
+      delete newState[action.post.id];
+      return newState;
+
     default:
       return state;
   }
@@ -1482,7 +1870,7 @@ var conStore = function conStore() {
 /*!****************************************!*\
   !*** ./frontend/util/post_api_util.js ***!
   \****************************************/
-/*! exports provided: fetchPost, fetchPosts, createPost */
+/*! exports provided: fetchPost, fetchPosts, createPost, deletePost */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1490,6 +1878,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPost", function() { return fetchPost; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPosts", function() { return fetchPosts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPost", function() { return createPost; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletePost", function() { return deletePost; });
 var fetchPost = function fetchPost(id) {
   return $.ajax({
     method: 'get',
@@ -1506,9 +1895,15 @@ var createPost = function createPost(post) {
   return $.ajax({
     method: 'post',
     url: '/api/posts',
-    data: {
-      post: post
-    }
+    data: post,
+    contentType: false,
+    processData: false
+  });
+};
+var deletePost = function deletePost(id) {
+  return $.ajax({
+    url: "/api/posts/".concat(id),
+    method: 'delete'
   });
 };
 

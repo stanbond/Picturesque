@@ -41,7 +41,6 @@ class SessionForm extends React.Component {
     }
 
     await sleep(175);
-
     document.getElementById('password-input').focus();
     for (let i = 1; i <= user.password.length; i++) {
       this.setState({ password: user.password.substr(0, i) });
@@ -49,7 +48,6 @@ class SessionForm extends React.Component {
     }
 
     await sleep(200);
-
     document.getElementById('session-submit-btn').click();
   }
 
@@ -86,7 +84,7 @@ class SessionForm extends React.Component {
                     {errorsLi}
                   </ul>
 
-                  <label></label>
+                  {/* <label></label> */}
                   <input 
                     type="text" 
                     id="username-input" 
@@ -95,7 +93,7 @@ class SessionForm extends React.Component {
                     className="signup-input"
                     placeholder="Username" />
                   
-                  <label></label>
+                  {/* <label></label> */}
                   <input 
                     type="password" 
                     id="password-input" 
@@ -135,7 +133,7 @@ class SessionForm extends React.Component {
                 {errorsLi}
               </ul>
 
-              <label></label>
+              {/* <label></label> */}
               <input
                 type="text"
                 id="email"
@@ -144,7 +142,7 @@ class SessionForm extends React.Component {
                 className="signup-input"
                 placeholder="Mobile Number or Email" />
               
-              <label></label>
+              {/* <label></label> */}
               <input
                 type="text"
                 id="fullname"
@@ -153,7 +151,7 @@ class SessionForm extends React.Component {
                 className="signup-input"
                 placeholder="Full Name" />
               
-              <label></label>
+              {/* <label></label> */}
               <input 
                 type="text" 
                 id="username" 
@@ -162,7 +160,7 @@ class SessionForm extends React.Component {
                 className="signup-input"
                 placeholder="Username" />
               
-              <label></label>
+              {/* <label></label> */}
               <input 
                 type="password" 
                 id="password" 

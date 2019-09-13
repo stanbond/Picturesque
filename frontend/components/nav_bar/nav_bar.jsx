@@ -7,6 +7,7 @@ class NavBar extends React.Component {
   }
 
   handleCreate() {
+    // debugger
     document.getElementById('postform').className = 'show';
   }
 
