@@ -37,17 +37,17 @@ class SessionForm extends React.Component {
     document.getElementById('username-input').focus();
     for (let i = 1; i <= user.username.length; i++) {
       this.setState({ username: user.username.substr(0, i) });
-      await sleep(175);
+      await sleep(160);
     }
 
-    await sleep(175);
+    await sleep(160);
     document.getElementById('password-input').focus();
     for (let i = 1; i <= user.password.length; i++) {
       this.setState({ password: user.password.substr(0, i) });
       await sleep(150);
     }
 
-    await sleep(200);
+    await sleep(160);
     document.getElementById('session-submit-btn').click();
   }
 

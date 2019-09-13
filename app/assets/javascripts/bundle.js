@@ -1400,7 +1400,7 @@ function (_React$Component) {
                   username: user.username.substr(0, i)
                 });
                 _context.next = 9;
-                return sleep(175);
+                return sleep(160);
 
               case 9:
                 i++;
@@ -1409,7 +1409,7 @@ function (_React$Component) {
 
               case 12:
                 _context.next = 14;
-                return sleep(175);
+                return sleep(160);
 
               case 14:
                 document.getElementById('password-input').focus();
@@ -1434,7 +1434,7 @@ function (_React$Component) {
 
               case 23:
                 _context.next = 25;
-                return sleep(200);
+                return sleep(160);
 
               case 25:
                 document.getElementById('session-submit-btn').click();
