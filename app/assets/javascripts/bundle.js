@@ -1006,10 +1006,10 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _post_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./post_index_item */ "./frontend/components/posts/post_index_item.jsx");
-/* harmony import */ var _actions_post_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/post_actions */ "./frontend/actions/post_actions.js");
 
-
-
+ // import {
+//   removePost
+// } from '../../actions/post_actions';
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {};
@@ -1088,12 +1088,7 @@ function (_React$Component) {
         className: "posts"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, "POSTS"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "posts-grid"
-      }, this.props.posts.map(function (post, idx) {
-        react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_profile_post_item__WEBPACK_IMPORTED_MODULE_8__["default"], {
-          key: idx,
-          post: post
-        });
-      }))));
+      })));
     }
   }]);
 
@@ -1122,15 +1117,14 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   var user = state.entities.users[ownProps.match.params.id];
-  var posts;
-
-  if (user) {
-    posts = user.postIds.map(function (id) {
-      return state.entities.posts[id];
-    });
-  } else {
-    posts = [undefined];
-  }
+  var posts = state.entities.posts; // let posts;
+  // if (user) {
+  //   posts = user.postIds.map(
+  //     id => state.entities.posts[id]
+  //   );
+  // } else {
+  //   posts = [ undefined ];
+  // }
 
   return {
     user: user,

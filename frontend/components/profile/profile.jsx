@@ -33,11 +33,11 @@ class Profile extends React.Component {
             </div>
           </div>
           <div className="posts-grid">
-            {this.props.posts.map((post, idx) => {
+            {/* {this.props.posts.map((post, idx) => {
               <ProfilePostItem
                 key={idx}
                 post={post} />;
-            })} 
+            })}  */}
           </div>
         </div>
         {/* <CreatePostFormContainer /> */}
