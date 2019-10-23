@@ -100,10 +100,10 @@ class PostForm extends React.Component {
       );
     if (this.state.photo === null) {
       return (
-        <div className="upload-window">
+        <div className="post-upload-modal">
           {/* <img src="/images/camera.png" /> */}
-          <h3>Upload a Photo</h3>
-          <div className="upload-msg">
+          <p className="post-upload-header">Upload a Photo</p>
+          <div className="post-upload-msg">
             <p>Share photos that you'd like your friends to see</p>
           </div>
           <label>
@@ -116,15 +116,15 @@ class PostForm extends React.Component {
       );
     } else {
       return (
-        <div className="upload-window">
-          <div className="upload-form">
+        <div className="post-upload-modal">
+          <div className="post-upload-form">
 
-            <div className="preview">
+            <div className="post-preview">
               <img src={this.state.preview} />
             </div>
-            <div className="user-inputs">
-              <p className="title">New Picturesque Post</p>
-              <p className="subtitle">Details</p>
+            <div className="post-user-input">
+              <p className="post-title">New Picturesque Post</p>
+              <p className="post-details">Details</p>
 
               <textarea
                 value={this.state.caption}
@@ -144,7 +144,7 @@ class PostForm extends React.Component {
   }
   render() {
     return (
-      <div id="postform" className='hide'>
+      <div id="postform" className='hidden'>
         {this.renderForm()}
         <div className="modal-screen"
           onClick={this.closeModal}>

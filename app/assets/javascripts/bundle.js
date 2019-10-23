@@ -701,9 +701,11 @@ function (_React$Component) {
 
       if (this.state.photo === null) {
         return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-          className: "upload-window"
-        }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h3", null, "Upload a Photo"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-          className: "upload-msg"
+          className: "post-upload-modal"
+        }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", {
+          className: "post-upload-header"
+        }, "Upload a Photo"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "post-upload-msg"
         }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", null, "Share photos that you'd like your friends to see")), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", null, "Upload"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
           type: "file",
           accept: "image/*",
@@ -711,19 +713,19 @@ function (_React$Component) {
         })));
       } else {
         return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-          className: "upload-window"
+          className: "post-upload-modal"
         }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-          className: "upload-form"
+          className: "post-upload-form"
         }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-          className: "preview"
+          className: "post-preview"
         }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("img", {
           src: this.state.preview
         })), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-          className: "user-inputs"
+          className: "post-user-input"
         }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", {
-          className: "title"
+          className: "post-title"
         }, "New Picturesque Post"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", {
-          className: "subtitle"
+          className: "post-details"
         }, "Details"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("textarea", {
           value: this.state.caption,
           placeholder: "Write a caption...",
@@ -741,7 +743,7 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         id: "postform",
-        className: "hide"
+        className: "hidden"
       }, this.renderForm(), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         className: "modal-screen",
         onClick: this.closeModal
