@@ -635,6 +635,17 @@ function (_React$Component) {
       };
     }
   }, {
+    key: "closeModal",
+    value: function closeModal() {
+      this.setState({
+        location: '',
+        caption: '',
+        photo: null,
+        preview: null
+      });
+      document.getElementById('postform').className = 'hide';
+    }
+  }, {
     key: "handleSubmit",
     value: function handleSubmit(event) {
       var _this4 = this;
@@ -662,17 +673,6 @@ function (_React$Component) {
 
         document.getElementById('postform').className = 'hide';
       });
-    }
-  }, {
-    key: "closeModal",
-    value: function closeModal() {
-      this.setState({
-        location: '',
-        caption: '',
-        photo: null,
-        preview: null
-      });
-      document.getElementById('postform').className = 'hide';
     }
   }, {
     key: "renderSumbit",
@@ -743,7 +743,7 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         id: "postform",
-        className: "hidden"
+        className: "hide"
       }, this.renderForm(), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         className: "modal-screen",
         onClick: this.closeModal
@@ -32348,7 +32348,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

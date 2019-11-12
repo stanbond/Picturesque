@@ -31,6 +31,16 @@ class PostForm extends React.Component {
     };
   }
 
+  closeModal() {
+    this.setState({
+      location: '',
+      caption: '',
+      photo: null,
+      preview: null
+    });
+    document.getElementById('postform').className = 'hide';
+  }
+
   handleSubmit(event) {
     event.preventDefault();
 
@@ -48,7 +58,7 @@ class PostForm extends React.Component {
     formData.append('post[caption]', this.state.caption);
     formData.append('post[photo]', this.state.photo);
     this.props.action(formData)
-      .then(() => {
+      .then( () => {
         this.setState({
           location: '',
           caption: '',
@@ -57,16 +67,6 @@ class PostForm extends React.Component {
         });
         document.getElementById('postform').className = 'hide';
       });
-  }
-
-  closeModal() {
-    this.setState({
-      location: '',
-      caption: '',
-      photo: null,
-      preview: null
-    });
-    document.getElementById('postform').className = 'hide';
   }
 
   renderSumbit() {
@@ -144,7 +144,7 @@ class PostForm extends React.Component {
   }
   render() {
     return (
-      <div id="postform" className='hidden'>
+      <div id="postform" className='hide'>
         {this.renderForm()}
         <div className="modal-screen"
           onClick={this.closeModal}>
