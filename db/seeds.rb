@@ -7,4 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
 Post.destroy_all
-User.create(email:"batman@picturesque.com", fullname:"Bruce Wayne", username:"bruce_wayne", password: "password")
+User.create(email:"batman@picturesque.com", fullname:"Bruce Wayne", username:"bruce_wayne", password:"password")
