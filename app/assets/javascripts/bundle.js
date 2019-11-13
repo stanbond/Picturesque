@@ -1090,12 +1090,7 @@ function (_React$Component) {
         className: "posts"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, "POSTS"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "posts-grid"
-      }, this.props.posts.map(function (post, idx) {
-        react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_profile_post_item__WEBPACK_IMPORTED_MODULE_8__["default"], {
-          key: idx,
-          post: post
-        });
-      }))));
+      })));
     }
   }]);
 
