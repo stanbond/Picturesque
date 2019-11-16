@@ -1,5 +1,4 @@
 import React from 'react';
-
 class LikeBar extends React.Component {
   constructor(props) {
     super(props);
@@ -7,7 +6,7 @@ class LikeBar extends React.Component {
     this.createLike = this.createLike.bind(this);
     this.removeLike = this.removeLike.bind(this);
     this.renderHeart = this.renderHeart.bind(this);
-    this.renderLikes = this.renderNumLikes.bind(this);
+    this.renderLikes = this.renderLikes.bind(this);
   }
 
   createLike() {
@@ -29,25 +28,28 @@ class LikeBar extends React.Component {
 
   renderHeart() {
     let { likers, currentUser} = this.props;
-
-    return !likers.includes(currentUser) ? (
+    // likers = likers || []
+    return likers.includes(currentUser) ? (
       <div className="icons">
-        <img src='' onClick={this.createLike} />
+        {/* <img src='' onClick={this.createLike} /> */}
+        <p onClick={this.removeLike} >HEART</p>
       </div>
     ) : (
         <div className="icons">
-          <img src='' onClick={this.removeLike} />
+          {/* <img src='' onClick={this.removeLike} /> */}
+          <p onClick={this.createLike} >HEART</p>
       </div>
     );
   }
 
   renderLikes() {
     let { likes } = this.props;
+    // likes = likes || []
     if (likes.length === 0) {
       return (
         <p id="num-likes">
-          <strong style={{ fontWeight: 'normal' }}>Be the first to </strong>like this
-                </p>
+          <strong>Be the first to </strong>like this
+        </p>
       );
     } else {
       return (<p id="num-likes">{likes.length} likes</p>);
@@ -63,3 +65,4 @@ class LikeBar extends React.Component {
     )
   }
 }
+export default LikeBar; 

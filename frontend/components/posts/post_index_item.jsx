@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import LikeContainer from '../likes/like_container';
 
 class PostIndexItem extends React.Component {
 
@@ -45,13 +46,10 @@ class PostIndexItem extends React.Component {
             <img src={this.props.post.photoUrl}/>
         </div>
           <div className="post-bottom">
-            {/* <LikeBarContainer postId={this.props.post.id} /> */}
+            <LikeContainer postId={this.props.post.id} />
             <div className="caption">
               {this.renderCaption()}
             </div>
-            {/* <CommentIndexContainer post={this.props.post} /> */}
-            {/* <CreateCommentFormContainer */}
-              {/* postId={this.props.post.id} /> */}
           </div>
       </div>
       </>

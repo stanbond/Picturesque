@@ -5,12 +5,12 @@ export const REMOVE_LIKE = 'REMOVE_LIKE';
 
 const receiveLike = like => ({
   type: RECEIVE_LIKE,
-  payload
+  like
 });
 
 const deleteLike = like => ({
   type: REMOVE_LIKE,
-  payload
+  like
 });
 
 export const createLike = like => dispatch => {
