@@ -2,7 +2,7 @@ export const createLike = like => {
   return $.ajax({
     url: '/api/likes',
     method: 'post',
-    data: { like: like }
+    data: { like }
   });
 };
 

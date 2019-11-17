@@ -1,6 +1,6 @@
 import { RECEIVE_ALL_POSTS, RECEIVE_POST } from '../actions/post_actions';
 import { RECEIVE_LIKE, REMOVE_LIKE } from '../actions/like_actions';
-import { merge } from 'lodash';
+
 
 const likesReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -13,11 +13,11 @@ const likesReducer = (state = {}, action) => {
         return action.payload.likes;
       }
     case RECEIVE_POST:
-      return merge({}, state, action.payload.likes);
+      return Object.assign({}, state, action.payload.likes);
     case RECEIVE_LIKE:
-      return merge({}, state, { [action.like.id]: action.like });
+      return Object.assign({}, state, { [action.like.id]: action.like });
     case REMOVE_LIKE:
-      let newState = merge({}, state);
+      let newState = Object.assign({}, state);
       delete newState[action.like.id];
       return newState;
     default:

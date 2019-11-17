@@ -120,8 +120,8 @@ var deleteLike = function deleteLike(like) {
 
 var createLike = function createLike(like) {
   return function (dispatch) {
-    return _util_like_api_util__WEBPACK_IMPORTED_MODULE_0__["createLike"](like).then(function (newLike) {
-      return dispatch(receiveLike(newLike));
+    return _util_like_api_util__WEBPACK_IMPORTED_MODULE_0__["createLike"](like).then(function (like) {
+      return dispatch(receiveLike(like));
     });
   };
 };
@@ -557,8 +557,8 @@ function (_React$Component) {
     value: function renderHeart() {
       var _this$props2 = this.props,
           likers = _this$props2.likers,
-          currentUser = _this$props2.currentUser; // likers = likers || []
-
+          currentUser = _this$props2.currentUser;
+      likers = likers || [];
       return likers.includes(currentUser) ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "icons"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
@@ -572,7 +572,8 @@ function (_React$Component) {
   }, {
     key: "renderLikes",
     value: function renderLikes() {
-      var likes = this.props.likes; // likes = likes || []
+      var likes = this.props.likes;
+      likes = likes || [];
 
       if (likes.length === 0) {
         return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
@@ -619,16 +620,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  var postLikes = state.entities.posts[ownProps.postId].like_ids; // console.log(state.entities.likes)
-
-  var filteredLikes = Object.values(state.entities.likes).filter(function (like) {
-    return postLikes.includes(like.id);
-  });
-  return {
-    likes: filteredLikes,
-    likers: state.entities.posts[ownProps.postId].liker_ids,
-    currentUser: state.session.currentUserId
-  };
+  var postLikes = state.entities.posts[ownProps.postId].like_ids;
+  console.log(state.entities.likes); // let filteredLikes = Object.values(state.entities.likes).filter(like =>
+  //   postLikes.includes(like.id));
+  // return ({
+  //   likes: filteredLikes,
+  //   likers: state.entities.posts[ownProps.postId].liker_ids,
+  //   currentUser: state.session.currentUserId
+  // });
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
@@ -2061,6 +2060,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _actions_post_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/post_actions */ "./frontend/actions/post_actions.js");
 /* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/user_actions */ "./frontend/actions/user_actions.js");
+/* harmony import */ var _actions_like_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../actions/like_actions */ "./frontend/actions/like_actions.js");
+
 
 
 
@@ -2069,6 +2070,11 @@ var postsReducer = function postsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
+  var newState = Object.assign({}, state);
+  var newLikerIdsArray;
+  var newLikeIdsArray;
+  var target;
+  var postObj;
 
   switch (action.type) {
     case _actions_user_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_USER"]:
@@ -2088,6 +2094,30 @@ var postsReducer = function postsReducer() {
 
     case _actions_post_actions__WEBPACK_IMPORTED_MODULE_1__["REMOVE_POST"]:
       delete newState[action.post.id];
+      return newState;
+
+    case _actions_like_actions__WEBPACK_IMPORTED_MODULE_3__["RECEIVE_LIKE"]:
+      target = action.like.post_id;
+      postObj = newState[action.like.post_id];
+      newLikerIdsArr = postObj.liker_ids;
+      newLikeIdsArr = postObj.like_ids;
+      newLikerIdsArr.push(action.like.user_id);
+      newLikeIdsArr.push(action.like.id);
+      newState[action.like.post_id].liker_ids = newLikerIdsArr;
+      newState[action.like.post_id].like_ids = newLikeIdsArr;
+      return newState;
+
+    case _actions_like_actions__WEBPACK_IMPORTED_MODULE_3__["REMOVE_LIKE"]:
+      newLikerIdsArr = newState[action.like.post_id].liker_ids;
+      newLikeIdsArr = newState[action.like.post_id].like_ids;
+      newLikerIdsArr = newLikerIdsArr.filter(function (val) {
+        return val !== action.like.user_id;
+      });
+      newLikeIdsArr = newLikeIdsArr.filter(function (val) {
+        return val !== action.like.id;
+      });
+      newState[action.like.post_id].liker_ids = newLikerIdsArr;
+      newState[action.like.post_id].like_ids = newLikeIdsArr;
       return newState;
 
     default:

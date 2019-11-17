@@ -28,7 +28,7 @@ class LikeBar extends React.Component {
 
   renderHeart() {
     let { likers, currentUser} = this.props;
-    // likers = likers || []
+    likers = likers || []
     return likers.includes(currentUser) ? (
       <div className="icons">
         {/* <img src='' onClick={this.createLike} /> */}
@@ -44,7 +44,7 @@ class LikeBar extends React.Component {
 
   renderLikes() {
     let { likes } = this.props;
-    // likes = likes || []
+    likes = likes || []
     if (likes.length === 0) {
       return (
         <p id="num-likes">
