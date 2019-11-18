@@ -2,7 +2,6 @@ import React from 'react';
 class LikeBar extends React.Component {
   constructor(props) {
     super(props);
-
     this.createLike = this.createLike.bind(this);
     this.removeLike = this.removeLike.bind(this);
     this.renderHeart = this.renderHeart.bind(this);
@@ -16,10 +15,10 @@ class LikeBar extends React.Component {
   }
 
   removeLike() {
-    let { likes, curntUser, removeLike } = this.props;
+    let { likes, currentUser, removeLike } = this.props;
 
     for (let i = 0; i < likes.length; i++) {
-      if (likes[i].user_id === curntUser) {
+      if (likes[i].user_id === currentUser) {
         removeLike(likes[i]);
         return;
       }
@@ -27,9 +26,9 @@ class LikeBar extends React.Component {
   }
 
   renderHeart() {
-    let { likers, curntUser} = this.props;
+    let { likers, currentUser} = this.props;
     likers = likers || []
-    return likers.includes(curntUser) ? (
+    return !likers.includes(currentUser) ? (
       <div className="icons">
         {/* <img src='' onClick={this.createLike} /> */}
         <p onClick={this.removeLike} >HEART</p>
@@ -37,7 +36,7 @@ class LikeBar extends React.Component {
     ) : (
         <div className="icons">
           {/* <img src='' onClick={this.removeLike} /> */}
-          <p onClick={this.createLike} >HEART</p>
+          <p onClick={this.createLike} >LIKED</p>
       </div>
     );
   }

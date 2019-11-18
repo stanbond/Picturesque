@@ -542,11 +542,11 @@ function (_React$Component) {
     value: function removeLike() {
       var _this$props = this.props,
           likes = _this$props.likes,
-          curntUser = _this$props.curntUser,
+          currentUser = _this$props.currentUser,
           removeLike = _this$props.removeLike;
 
       for (var i = 0; i < likes.length; i++) {
-        if (likes[i].user_id === curntUser) {
+        if (likes[i].user_id === currentUser) {
           removeLike(likes[i]);
           return;
         }
@@ -557,9 +557,9 @@ function (_React$Component) {
     value: function renderHeart() {
       var _this$props2 = this.props,
           likers = _this$props2.likers,
-          curntUser = _this$props2.curntUser;
+          currentUser = _this$props2.currentUser;
       likers = likers || [];
-      return likers.includes(curntUser) ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      return !likers.includes(currentUser) ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "icons"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
         onClick: this.removeLike
@@ -567,7 +567,7 @@ function (_React$Component) {
         className: "icons"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
         onClick: this.createLike
-      }, "HEART"));
+      }, "LIKED"));
     }
   }, {
     key: "renderLikes",
@@ -628,7 +628,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     likes: filteredLikes,
     likers: state.entities.posts[ownProps.postId].liker_ids,
-    curntUser: state.session.currentUserId
+    currentUser: state.session.currentUserId
   };
 };
 

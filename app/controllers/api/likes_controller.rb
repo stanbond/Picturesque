@@ -13,7 +13,7 @@ class Api::LikesController < ApplicationController
 
   def destroy
     @like = Like.find_by_id(params[:id])
-      if @like && @like.user_id == current_user.id && @like.destroy 
+      if @like && @like.user_id == current_user.id && @like.destroy
         render json: {}, status: 200
       end
   end
