@@ -11,6 +11,16 @@ class Api::PostsController < ApplicationController
     end
   end
 
+  def update
+    @post = Post.find_by(id: params[:id])
+    if @post && @post.update(post_params) && @post.user_id == current_user.id
+      @post = Post.includes(:user).with_attached_photo.where(id: @post.id)[0]
+      render :show
+    else
+      render json: ['missing required field'], status: 422
+    end
+  end
+
   def show
     @post = Post.with_attached_photo.includes(:user, :likes, :likers).where(id: params[:id])[0]
     # @user = User.find(@post.user_id)

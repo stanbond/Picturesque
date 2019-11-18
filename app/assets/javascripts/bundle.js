@@ -120,8 +120,8 @@ var deleteLike = function deleteLike(like) {
 
 var createLike = function createLike(like) {
   return function (dispatch) {
-    return _util_like_api_util__WEBPACK_IMPORTED_MODULE_0__["createLike"](like).then(function (like) {
-      return dispatch(receiveLike(like));
+    return _util_like_api_util__WEBPACK_IMPORTED_MODULE_0__["createLike"](like).then(function (nLike) {
+      return dispatch(receiveLike(nLike));
     });
   };
 };
@@ -557,8 +557,8 @@ function (_React$Component) {
     value: function renderHeart() {
       var _this$props2 = this.props,
           likers = _this$props2.likers,
-          currentUser = _this$props2.currentUser;
-      likers = likers || [];
+          currentUser = _this$props2.currentUser; // likers = likers || []
+
       return !likers.includes(currentUser) ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "icons"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
@@ -2124,8 +2124,8 @@ __webpack_require__.r(__webpack_exports__);
 var postsReducer = function postsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(state); // let newState = Object.assign({}, state);
-
+  Object.freeze(state);
+  var newState = Object.assign({}, state);
   var newLikerIdsArray;
   var newLikeIdsArray;
   var target;
@@ -2419,7 +2419,7 @@ var fetchLike = function fetchLike(id) {
 /*!****************************************!*\
   !*** ./frontend/util/post_api_util.js ***!
   \****************************************/
-/*! exports provided: fetchPost, fetchPosts, createPost, deletePost */
+/*! exports provided: fetchPost, fetchPosts, createPost, deletePost, updatePost */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2428,6 +2428,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPosts", function() { return fetchPosts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPost", function() { return createPost; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletePost", function() { return deletePost; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updatePost", function() { return updatePost; });
 var fetchPost = function fetchPost(id) {
   return $.ajax({
     method: 'get',
@@ -2453,6 +2454,15 @@ var deletePost = function deletePost(id) {
   return $.ajax({
     url: "/api/posts/".concat(id),
     method: 'delete'
+  });
+};
+var updatePost = function updatePost(post) {
+  return $.ajax({
+    url: "/api/posts/".concat(post.id),
+    method: 'patch',
+    data: {
+      post: post
+    }
   });
 };
 

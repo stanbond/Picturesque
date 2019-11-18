@@ -5,7 +5,7 @@ import { RECEIVE_LIKE, REMOVE_LIKE } from '../actions/like_actions';
 
 const postsReducer = (state={}, action) => {
   Object.freeze(state);
-  // let newState = Object.assign({}, state);
+  let newState = Object.assign({}, state);
   let newLikerIdsArray;
   let newLikeIdsArray;
   let target;
