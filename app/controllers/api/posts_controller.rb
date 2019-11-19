@@ -17,7 +17,7 @@ class Api::PostsController < ApplicationController
       @post = Post.includes(:user).with_attached_photo.where(id: @post.id)[0]
       render :show
     else
-      render json: ['missing required field'], status: 422
+      render json: ['missing input'], status: 422
     end
   end
 
@@ -30,10 +30,6 @@ class Api::PostsController < ApplicationController
       render json: ["Post unlocated"], status: 404
     end
   end
-
-  # def update
-
-  # end
 
   def destroy 
     @post = Post.find_by(id: params[:id])

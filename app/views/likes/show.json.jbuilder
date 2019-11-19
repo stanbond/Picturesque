@@ -1,1 +1,1 @@
-json.partial! '/api/likes/like', like: @like
+json.partial!('like', like: @like)

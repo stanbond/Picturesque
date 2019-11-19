@@ -9,6 +9,7 @@ class LikeBar extends React.Component {
   }
 
   createLike() {
+    // console.log(this.props)
     this.props.createLike({
       post_id: this.props.postId
     });
@@ -28,22 +29,22 @@ class LikeBar extends React.Component {
   renderHeart() {
     let { likers, currentUser} = this.props;
     // likers = likers || []
-    return !likers.includes(currentUser) ? (
+    return likers.includes(currentUser) ? (
       <div className="icons">
         {/* <img src='' onClick={this.createLike} /> */}
-        <p onClick={this.removeLike} >HEART</p>
+        <p onClick={this.removeLike()} >LIKED</p>
       </div>
     ) : (
         <div className="icons">
           {/* <img src='' onClick={this.removeLike} /> */}
-          <p onClick={this.createLike} >LIKED</p>
-      </div>
+          <p onClick={this.createLike()} >EMPTY HEART</p>
+        </div>
     );
   }
 
   renderLikes() {
     let { likes } = this.props;
-    likes = likes || []
+    // likes = likes || []
     if (likes.length === 0) {
       return (
         <p id="num-likes">

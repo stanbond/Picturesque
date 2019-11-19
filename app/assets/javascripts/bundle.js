@@ -533,6 +533,7 @@ function (_React$Component) {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(LikeBar, [{
     key: "createLike",
     value: function createLike() {
+      // console.log(this.props)
       this.props.createLike({
         post_id: this.props.postId
       });
@@ -559,21 +560,20 @@ function (_React$Component) {
           likers = _this$props2.likers,
           currentUser = _this$props2.currentUser; // likers = likers || []
 
-      return !likers.includes(currentUser) ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      return likers.includes(currentUser) ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "icons"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
-        onClick: this.removeLike
-      }, "HEART")) : react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        onClick: this.removeLike()
+      }, "LIKED")) : react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "icons"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
-        onClick: this.createLike
-      }, "LIKED"));
+        onClick: this.createLike()
+      }, "EMPTY HEART"));
     }
   }, {
     key: "renderLikes",
     value: function renderLikes() {
-      var likes = this.props.likes;
-      likes = likes || [];
+      var likes = this.props.likes; // likes = likes || []
 
       if (likes.length === 0) {
         return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
