@@ -7,7 +7,7 @@ class Api::LikesController < ApplicationController
       if @like.save
         render :show
       else
-        render json: @like.errors.full_messages, status: 418
+        render json: @like.errors.full_messages
       end
   end
 
@@ -15,6 +15,8 @@ class Api::LikesController < ApplicationController
     @like = Like.find_by_id(params[:id])
       if @like && @like.user_id == current_user.id && @like.destroy
         render json: {}, status: 200
+      else
+        render json: ['Invalid entry'], status: 422
       end
   end
 

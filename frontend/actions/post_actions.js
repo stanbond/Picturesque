@@ -22,19 +22,19 @@ const deletePost = post => ({
 export const fetchAllPosts = () => dispatch => {
   return PostAPIUtil.fetchPosts()
     .then(posts => dispatch(receiveAllPosts(posts)))
-    // .fail(res => dispatch(receivePostErrors(res.responseJSON)));
+    .fail(res => dispatch(receivePostErrors(res.responseJSON)));
 };
 
 export const fetchPost = id => dispatch => {
   return PostAPIUtil.fetchPost(id)
     .then(payload => dispatch(receivePost(payload)))
-    // .fail(res => dispatch(receivePostErrors(res.responseJSON)));
+    .fail(res => dispatch(receivePostErrors(res.responseJSON)));
 };
 
 export const createPost = post => dispatch => {
   return PostAPIUtil.createPost(post)
     .then(newPost => dispatch(receivePost(newPost)))
-    // .fail(res => dispatch(receivePostErrors(res.responseJSON)));
+    .fail(res => dispatch(receivePostErrors(res.responseJSON)));
 };
 
 export const removePost = post => dispatch => {

@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
   return ({
     likes: filteredLikes,
     likers: state.entities.posts[ownProps.postId].liker_ids,
-    currentUser: state.session.currentUserId
+    currentUser: state.session.id
   });
 };
 

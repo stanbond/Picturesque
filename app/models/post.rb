@@ -13,7 +13,7 @@
 class Post < ApplicationRecord
   validates :user_id, :caption, presence: true
   validate :ensure_attachment
-  
+
   has_one_attached :photo
   belongs_to :user
   has_many :likes, dependent: :destroy

@@ -182,21 +182,27 @@ var fetchAllPosts = function fetchAllPosts() {
   return function (dispatch) {
     return _util_post_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchPosts"]().then(function (posts) {
       return dispatch(receiveAllPosts(posts));
-    }); // .fail(res => dispatch(receivePostErrors(res.responseJSON)));
+    }).fail(function (res) {
+      return dispatch(receivePostErrors(res.responseJSON));
+    });
   };
 };
 var fetchPost = function fetchPost(id) {
   return function (dispatch) {
     return _util_post_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchPost"](id).then(function (payload) {
       return dispatch(receivePost(payload));
-    }); // .fail(res => dispatch(receivePostErrors(res.responseJSON)));
+    }).fail(function (res) {
+      return dispatch(receivePostErrors(res.responseJSON));
+    });
   };
 };
 var createPost = function createPost(post) {
   return function (dispatch) {
     return _util_post_api_util__WEBPACK_IMPORTED_MODULE_0__["createPost"](post).then(function (newPost) {
       return dispatch(receivePost(newPost));
-    }); // .fail(res => dispatch(receivePostErrors(res.responseJSON)));
+    }).fail(function (res) {
+      return dispatch(receivePostErrors(res.responseJSON));
+    });
   };
 };
 var removePost = function removePost(post) {
@@ -536,7 +542,7 @@ function (_React$Component) {
       // console.log(this.props)
       this.props.createLike({
         post_id: this.props.postId
-      });
+      }); // .then(this.setState({}))
     }
   }, {
     key: "removeLike",
@@ -559,15 +565,16 @@ function (_React$Component) {
       var _this$props2 = this.props,
           likers = _this$props2.likers,
           currentUser = _this$props2.currentUser; // likers = likers || []
+      // console.log(this.props.postId)
 
       return likers.includes(currentUser) ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "icons"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
-        onClick: this.removeLike()
+        onClick: this.removeLike
       }, "LIKED")) : react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "icons"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
-        onClick: this.createLike()
+        onClick: this.createLike
       }, "EMPTY HEART"));
     }
   }, {
@@ -628,7 +635,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     likes: filteredLikes,
     likers: state.entities.posts[ownProps.postId].liker_ids,
-    currentUser: state.session.currentUserId
+    currentUser: state.session.id
   };
 };
 
@@ -2150,30 +2157,26 @@ var postsReducer = function postsReducer() {
     case _actions_post_actions__WEBPACK_IMPORTED_MODULE_1__["REMOVE_POST"]:
       delete newState[action.post.id];
       return newState;
-
-    case _actions_like_actions__WEBPACK_IMPORTED_MODULE_3__["RECEIVE_LIKE"]:
-      target = action.like.post_id;
-      postObj = newState[action.like.post_id];
-      newLikerIdsArr = postObj.liker_ids;
-      newLikeIdsArr = postObj.like_ids;
-      newLikerIdsArr.push(action.like.user_id);
-      newLikeIdsArr.push(action.like.id);
-      newState[action.like.post_id].liker_ids = newLikerIdsArr;
-      newState[action.like.post_id].like_ids = newLikeIdsArr;
-      return newState;
-
-    case _actions_like_actions__WEBPACK_IMPORTED_MODULE_3__["REMOVE_LIKE"]:
-      newLikerIdsArr = newState[action.like.post_id].liker_ids;
-      newLikeIdsArr = newState[action.like.post_id].like_ids;
-      newLikerIdsArr = newLikerIdsArr.filter(function (val) {
-        return val !== action.like.user_id;
-      });
-      newLikeIdsArr = newLikeIdsArr.filter(function (val) {
-        return val !== action.like.id;
-      });
-      newState[action.like.post_id].liker_ids = newLikerIdsArr;
-      newState[action.like.post_id].like_ids = newLikeIdsArr;
-      return newState;
+    // case RECEIVE_LIKE:
+    //   target = action.like.post_id;
+    //   console.log(newState)
+    //   console.log(action)
+    //   postObj = newState[action.like.post_id];
+    //   newLikerIdsArr = postObj.liker_ids;
+    //   newLikeIdsArr = postObj.like_ids;
+    //   newLikerIdsArr.push(action.like.user_id);
+    //   newLikeIdsArr.push(action.like.id);
+    //   newState[action.like.post_id].liker_ids = newLikerIdsArr;
+    //   newState[action.like.post_id].like_ids = newLikeIdsArr;
+    //   return newState;
+    // case REMOVE_LIKE:
+    //   newLikerIdsArr = newState[action.like.post_id].liker_ids;
+    //   newLikeIdsArr = newState[action.like.post_id].like_ids;
+    //   newLikerIdsArr = newLikerIdsArr.filter(val => val !== action.like.user_id);
+    //   newLikeIdsArr = newLikeIdsArr.filter(val => val !== action.like.id);
+    //   newState[action.like.post_id].liker_ids = newLikerIdsArr;
+    //   newState[action.like.post_id].like_ids = newLikeIdsArr;
+    //   return newState; 
 
     default:
       return state;
@@ -32715,7 +32718,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

@@ -31,14 +31,14 @@ class Api::PostsController < ApplicationController
     end
   end
 
-  def destroy 
+  def destroy
     @post = Post.find_by(id: params[:id])
-    if @post && @post.user_id == current_user.id && @post.destroy 
+    if @post && @post.user_id == current_user.id && @post.destroy
       render json: {}, status: 200
-    else 
+    else
       render json: ['Post unlocated'], status: 404
-    end 
-  end 
+    end
+  end
 
   def index
     @posts = Post.all.includes(:user, :likes, :likers).with_attached_photo
@@ -47,10 +47,10 @@ class Api::PostsController < ApplicationController
 
     @posts.each do |post|
       @users << post.user
-    
+
       post.likes.each do |like|
         @likes << like
-      end 
+      end
     end
       render :index 
   end
