@@ -7,17 +7,15 @@ class LikeBar extends React.Component {
     this.renderHeart = this.renderHeart.bind(this);
     this.renderLikes = this.renderLikes.bind(this);
     this.state = { 
-      liked: this.props.likers.includes(this.props.currentUser)}
-      // ,
-      // likes: this.props.likes}
+      liked: this.props.likers.includes(this.props.currentUser),
+      count: this.props.likes.length}
   }
 
   createLike() {
     // console.log(this.props)
     this.props.createLike({
       post_id: this.props.postId
-    }).then(this.setState({liked: true }))
-      // , likes: this.state.likes+1}))
+    }).then(this.setState({liked: true , count: this.state.count+1}))
   } 
 
   removeLike() {
@@ -25,8 +23,7 @@ class LikeBar extends React.Component {
 
     for (let i = 0; i < likes.length; i++) {
       if (likes[i].user_id === currentUser) {
-        removeLike(likes[i]).then(this.setState({liked: false }))
-          // , likes: this.state.likes-1}))
+        removeLike(likes[i]).then(this.setState({liked: false , count: this.state.count-1}))
         return;
       }
     }
@@ -52,15 +49,14 @@ class LikeBar extends React.Component {
   renderLikes() {
     let { likes } = this.props;
     // likes = likes || []
-    // console.log(this.state)
-    if (likes.length === 0) {
+    if (this.state.count === 0) {
       return (
         <p id="num-likes">
           <strong>Be the first to </strong>like this
         </p>
       );
     } else {
-      return (<p id="num-likes">{likes.length} likes</p>);
+      return (<p id="num-likes">{this.state.count} likes</p>);
     }
   }
 

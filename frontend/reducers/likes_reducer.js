@@ -10,7 +10,7 @@ const likesReducer = (state = {}, action) => {
       if (action.payload.likes === undefined) {
         return state;
       } else {
-        return action.payload.likes;
+        return Object.assign({}, state, action.payload.likes);
       }
     case RECEIVE_POST:
       return Object.assign({}, state, action.payload.likes);

@@ -534,9 +534,8 @@ function (_React$Component) {
     _this.renderHeart = _this.renderHeart.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     _this.renderLikes = _this.renderLikes.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     _this.state = {
-      liked: _this.props.likers.includes(_this.props.currentUser) // ,
-      // likes: this.props.likes}
-
+      liked: _this.props.likers.includes(_this.props.currentUser),
+      count: _this.props.likes.length
     };
     return _this;
   }
@@ -548,8 +547,9 @@ function (_React$Component) {
       this.props.createLike({
         post_id: this.props.postId
       }).then(this.setState({
-        liked: true
-      })); // , likes: this.state.likes+1}))
+        liked: true,
+        count: this.state.count + 1
+      }));
     }
   }, {
     key: "removeLike",
@@ -562,9 +562,9 @@ function (_React$Component) {
       for (var i = 0; i < likes.length; i++) {
         if (likes[i].user_id === currentUser) {
           removeLike(likes[i]).then(this.setState({
-            liked: false
-          })); // , likes: this.state.likes-1}))
-
+            liked: false,
+            count: this.state.count - 1
+          }));
           return;
         }
       }
@@ -591,16 +591,15 @@ function (_React$Component) {
     key: "renderLikes",
     value: function renderLikes() {
       var likes = this.props.likes; // likes = likes || []
-      // console.log(this.state)
 
-      if (likes.length === 0) {
+      if (this.state.count === 0) {
         return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
           id: "num-likes"
         }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("strong", null, "Be the first to "), "like this");
       } else {
         return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
           id: "num-likes"
-        }, likes.length, " likes");
+        }, this.state.count, " likes");
       }
     }
   }, {
@@ -2097,7 +2096,7 @@ var likesReducer = function likesReducer() {
       if (action.payload.likes === undefined) {
         return state;
       } else {
-        return action.payload.likes;
+        return Object.assign({}, state, action.payload.likes);
       }
 
     case _actions_post_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_POST"]:
