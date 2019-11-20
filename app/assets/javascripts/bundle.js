@@ -533,6 +533,11 @@ function (_React$Component) {
     _this.removeLike = _this.removeLike.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     _this.renderHeart = _this.renderHeart.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     _this.renderLikes = _this.renderLikes.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.state = {
+      liked: _this.props.likers.includes(_this.props.currentUser) // ,
+      // likes: this.props.likes}
+
+    };
     return _this;
   }
 
@@ -542,7 +547,9 @@ function (_React$Component) {
       // console.log(this.props)
       this.props.createLike({
         post_id: this.props.postId
-      }); // .then(this.setState({}))
+      }).then(this.setState({
+        liked: true
+      })); // , likes: this.state.likes+1}))
     }
   }, {
     key: "removeLike",
@@ -554,7 +561,10 @@ function (_React$Component) {
 
       for (var i = 0; i < likes.length; i++) {
         if (likes[i].user_id === currentUser) {
-          removeLike(likes[i]);
+          removeLike(likes[i]).then(this.setState({
+            liked: false
+          })); // , likes: this.state.likes-1}))
+
           return;
         }
       }
@@ -567,7 +577,7 @@ function (_React$Component) {
           currentUser = _this$props2.currentUser; // likers = likers || []
       // console.log(this.props.postId)
 
-      return likers.includes(currentUser) ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      return this.state.liked ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "icons"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
         onClick: this.removeLike
@@ -581,6 +591,7 @@ function (_React$Component) {
     key: "renderLikes",
     value: function renderLikes() {
       var likes = this.props.likes; // likes = likes || []
+      // console.log(this.state)
 
       if (likes.length === 0) {
         return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
@@ -2093,9 +2104,11 @@ var likesReducer = function likesReducer() {
       return Object.assign({}, state, action.payload.likes);
 
     case _actions_like_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_LIKE"]:
+      // console.log(action)
       return Object.assign({}, state, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, action.like.id, action.like));
 
     case _actions_like_actions__WEBPACK_IMPORTED_MODULE_2__["REMOVE_LIKE"]:
+      // console.log(action)
       var newState = Object.assign({}, state);
       delete newState[action.like.id];
       return newState;

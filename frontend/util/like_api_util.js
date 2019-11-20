@@ -3,14 +3,14 @@ export const createLike = like => {
     url: '/api/likes',
     method: 'post',
     data: { like }
-  });
+  })
 };
 
 export const destroyLike = id => {
   return $.ajax({
     url: `/api/likes/${id}`,
     method: 'delete'
-  });
+  })
 };
 
 export const fetchAllLikes = () => {

@@ -6,22 +6,27 @@ class LikeBar extends React.Component {
     this.removeLike = this.removeLike.bind(this);
     this.renderHeart = this.renderHeart.bind(this);
     this.renderLikes = this.renderLikes.bind(this);
+    this.state = { 
+      liked: this.props.likers.includes(this.props.currentUser)}
+      // ,
+      // likes: this.props.likes}
   }
 
   createLike() {
     // console.log(this.props)
     this.props.createLike({
       post_id: this.props.postId
-    })
-    // .then(this.setState({}))
-  }
+    }).then(this.setState({liked: true }))
+      // , likes: this.state.likes+1}))
+  } 
 
   removeLike() {
     let { likes, currentUser, removeLike } = this.props;
 
     for (let i = 0; i < likes.length; i++) {
       if (likes[i].user_id === currentUser) {
-        removeLike(likes[i]);
+        removeLike(likes[i]).then(this.setState({liked: false }))
+          // , likes: this.state.likes-1}))
         return;
       }
     }
@@ -31,7 +36,7 @@ class LikeBar extends React.Component {
     let { likers, currentUser} = this.props;
     // likers = likers || []
     // console.log(this.props.postId)
-    return likers.includes(currentUser) ? (
+    return this.state.liked ? (
       <div className="icons">
         {/* <img src='' onClick={this.createLike} /> */}
         <p onClick={this.removeLike} >LIKED</p>
@@ -47,6 +52,7 @@ class LikeBar extends React.Component {
   renderLikes() {
     let { likes } = this.props;
     // likes = likes || []
+    // console.log(this.state)
     if (likes.length === 0) {
       return (
         <p id="num-likes">

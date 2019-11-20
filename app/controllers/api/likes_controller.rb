@@ -5,7 +5,7 @@ class Api::LikesController < ApplicationController
     @like = Like.new(like_params)
     @like.user_id = current_user.id
       if @like.save
-        render :show
+        render json: @like, status: 200
       else
         render json: @like.errors.full_messages
       end
@@ -13,8 +13,10 @@ class Api::LikesController < ApplicationController
 
   def destroy
     @like = Like.find_by_id(params[:id])
+    p @like
       if @like && @like.user_id == current_user.id && @like.destroy
-        render json: {}, status: 200
+        p @like
+        render json: @like, status: 200
       else
         render json: ['Invalid entry'], status: 422
       end
