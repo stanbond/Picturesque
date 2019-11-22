@@ -579,13 +579,17 @@ function (_React$Component) {
 
       return this.state.liked ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "icons"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
+        className: "heart",
+        src: "/red_heart.png",
         onClick: this.removeLike
-      }, "LIKED")) : react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      })) : react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "icons"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
+        className: "heart",
+        src: "/heart.png",
         onClick: this.createLike
-      }, "EMPTY HEART"));
+      }));
     }
   }, {
     key: "renderLikes",

@@ -36,12 +36,12 @@ class LikeBar extends React.Component {
     return this.state.liked ? (
       <div className="icons">
         {/* <img src='' onClick={this.createLike} /> */}
-        <p onClick={this.removeLike} >LIKED</p>
+        <img className="heart" src='/red_heart.png' onClick={this.removeLike} />
       </div>
     ) : (
         <div className="icons">
           {/* <img src='' onClick={this.removeLike} /> */}
-          <p onClick={this.createLike} >EMPTY HEART</p>
+        <img className="heart" src='/heart.png' onClick={this.createLike} />
         </div>
     );
   }
