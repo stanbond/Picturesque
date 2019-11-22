@@ -12,7 +12,6 @@ class LikeBar extends React.Component {
   }
 
   createLike() {
-    // console.log(this.props)
     this.props.createLike({
       post_id: this.props.postId
     }).then(this.setState({liked: true , count: this.state.count+1}))
@@ -35,12 +34,12 @@ class LikeBar extends React.Component {
     // console.log(this.props.postId)
     return this.state.liked ? (
       <div className="icons">
-        {/* <img src='' onClick={this.createLike} /> */}
+        
         <img className="heart" src='/red_heart.png' onClick={this.removeLike} />
       </div>
     ) : (
         <div className="icons">
-          {/* <img src='' onClick={this.removeLike} /> */}
+          
         <img className="heart" src='/heart.png' onClick={this.createLike} />
         </div>
     );

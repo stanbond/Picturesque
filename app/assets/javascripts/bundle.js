@@ -543,7 +543,6 @@ function (_React$Component) {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(LikeBar, [{
     key: "createLike",
     value: function createLike() {
-      // console.log(this.props)
       this.props.createLike({
         post_id: this.props.postId
       }).then(this.setState({
