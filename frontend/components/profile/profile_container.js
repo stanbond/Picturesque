@@ -4,15 +4,15 @@ import Profile from './profile';
 
 const mapStateToProps = (state, ownProps) => {
   let user = state.entities.users[ownProps.match.params.id];
-  let posts = state.entities.posts;
-  // let posts;
-  // if (user) {
-  //   posts = user.postIds.map(
-  //     id => state.entities.posts[id]
-  //   );
-  // } else {
-  //   posts = [ undefined ];
-  // }
+  // let posts = state.entities.posts;
+  let posts;
+  if (user) {
+    posts = user.postIds.map(
+      id => state.entities.posts[id]
+    );
+  } else {
+    posts = [ undefined ];
+  }
 
   return ({
     user,

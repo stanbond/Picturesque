@@ -8,10 +8,10 @@ const receiveUser = (payload) => ({
   payload
 });
 
-const receiveUsers = payload => ({
-  type: RECEIVE_USERS,
-  payload
-});
+// const receiveUsers = payload => ({
+//   type: RECEIVE_USERS,
+//   payload
+// });
 
 export const fetchUser = id => dispatch => {
   return UserAPIUtil.fetchUser(id)
