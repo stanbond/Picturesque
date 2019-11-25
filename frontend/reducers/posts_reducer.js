@@ -19,7 +19,8 @@ const postsReducer = (state={}, action) => {
         return state;
       };
     case RECEIVE_ALL_POSTS:
-      return action.payload.posts || {};
+      // console.log(action);
+      return action.payload.posts || [];
     case RECEIVE_POST:
       return Object.assign({}, state, {[action.payload.post.id]: action.payload.post});
     case REMOVE_POST:

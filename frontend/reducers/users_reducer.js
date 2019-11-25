@@ -9,8 +9,11 @@ const usersReducers = (state = {}, action) => {
     case RECEIVE_USER:
       return Object.assign({}, state, action.payload.user);
     case RECEIVE_ALL_POSTS:
+      // { [action.paylod.id]: action.payload }
+      console.log(action)
       return Object.assign({}, state, action.payload.users);
     case RECEIVE_POST:
+      console.log(action);
       return Object.assign({}, state, { [action.payload.user.id]: action.payload.user });
     default:
       return state;
@@ -18,3 +21,9 @@ const usersReducers = (state = {}, action) => {
 }
 
 export default usersReducers;
+
+// let posts = state.posts || [];
+// posts.concat(action.payload);
+// // return Object.assign({}, state, action.payload.users);
+
+// return posts;

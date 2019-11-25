@@ -101,7 +101,6 @@ class PostForm extends React.Component {
     if (this.state.photo === null) {
       return (
         <div className="post-upload-modal">
-          {/* <img src="/images/camera.png" /> */}
           <p className="post-upload-header">Upload a Photo</p>
           <div className="post-upload-msg">
             <p>Share photos that you'd like your friends to see</p>
