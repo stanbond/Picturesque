@@ -19,7 +19,7 @@ class Profile extends React.Component {
       <>
       <NavBarContainer/>
         <section className="profile-header">
-          <img src={user.profilePhoto} />
+          <img className="pro-pic" src={this.props.user.profilePhoto} />
           <div>
             <h2>{user.username}</h2>
             <p><strong>{user.postIds.length}</strong>posts</p>

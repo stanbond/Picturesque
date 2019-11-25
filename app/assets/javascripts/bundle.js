@@ -1321,7 +1321,8 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_5___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("section", {
         className: "profile-header"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
-        src: user.profilePhoto
+        className: "pro-pic",
+        src: this.props.user.profilePhoto
       }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h2", null, user.username), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("strong", null, user.postIds.length), "posts"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, user.bio))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "profile-posts"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
