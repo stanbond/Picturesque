@@ -28,8 +28,10 @@ class Profile extends React.Component {
         if (post === undefined)
           return;
         if (post.user_id === this.props.user.id) {
-          return <img key={idx} src={post.photoUrl} />
-          // <li key={idx}>{post.caption}</li>;
+          return <div className="profile-post-item">
+          <img key={idx} src={post.photoUrl} />
+           {/* <li key={idx}>{post.caption}</li>; */}
+          </div>
         } else {
           return ""
         }
@@ -97,18 +99,20 @@ class Profile extends React.Component {
               accept="image/*"
               onChange={this.fileHandler} />
           </label> */}
-          <div>
-            <h2>{user.username}</h2>
-            <p><strong>{user.postIds.length}</strong>posts</p>
+          <div className="pro-user-info">
+            <h2 className="pro-username">{user.username}</h2>
+            <p><strong>{user.postIds.length}</strong> posts</p>
             <p>{user.bio}</p>
           </div>
         </section>
+
         <div className="profile-posts">
           <div className="profile-menu">
             <div className="posts">
               <p>POSTS</p>
 
             </div>
+          </div>
             <div className="posts-grid">
               {this.renderPost()}
               {/* {this.props.posts.map((post, idx) => {
@@ -117,7 +121,7 @@ class Profile extends React.Component {
                 post={post} />;
             })}  */}
             </div>
-          </div>
+          
         </div>
         <PostForm />
 

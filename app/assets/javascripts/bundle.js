@@ -1340,10 +1340,12 @@ function (_React$Component) {
         if (post === undefined) return;
 
         if (post.user_id === _this2.props.user.id) {
-          return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
+          return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+            className: "profile-post-item"
+          }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
             key: idx,
             src: post.photoUrl
-          }); // <li key={idx}>{post.caption}</li>;
+          }));
         } else {
           return "";
         }
@@ -1400,15 +1402,19 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
         className: "pro-pic",
         src: this.props.user.profilePhoto
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h2", null, user.username), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("strong", null, user.postIds.length), "posts"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, user.bio))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "pro-user-info"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h2", {
+        className: "pro-username"
+      }, user.username), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("strong", null, user.postIds.length), " posts"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, user.bio))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "profile-posts"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "profile-menu"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "posts"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, "POSTS")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, "POSTS"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "posts-grid"
-      }, this.renderPost()))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_post_form_post_form_container__WEBPACK_IMPORTED_MODULE_10__["default"], null));
+      }, this.renderPost())), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_post_form_post_form_container__WEBPACK_IMPORTED_MODULE_10__["default"], null));
     }
   }]);
 
