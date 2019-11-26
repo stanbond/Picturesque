@@ -833,7 +833,7 @@ function (_React$Component) {
     _this.handleInput = _this.handleInput.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this));
     _this.handlePhoto = _this.handlePhoto.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this));
-    _this.renderSumbit = _this.renderSumbit.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this));
+    _this.renderSubmit = _this.renderSubmit.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this));
     _this.closeModal = _this.closeModal.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this));
     return _this;
   }
@@ -907,8 +907,8 @@ function (_React$Component) {
       });
     }
   }, {
-    key: "renderSumbit",
-    value: function renderSumbit() {
+    key: "renderSubmit",
+    value: function renderSubmit() {
       if (this.state.caption === '') {
         return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", {
           className: "dummy-submit-button"
@@ -967,7 +967,7 @@ function (_React$Component) {
           value: this.state.location,
           placeholder: "Add location",
           onChange: this.handleInput('location')
-        }), this.renderSumbit(), errors)));
+        }), this.renderSubmit(), errors)));
       }
     }
   }, {
@@ -1315,9 +1315,13 @@ function (_React$Component) {
 
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Profile).call(this, props));
     _this.state = {
-      posts: {}
+      posts: {},
+      profilePhoto: null
     };
-    _this.renderPost = _this.renderPost.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.renderPost = _this.renderPost.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this)); // this.updateProPic = this.updateProPic.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
+    // this.fileHandler = this.fileHandler.bind(this);
+
     return _this;
   }
 
@@ -1344,12 +1348,54 @@ function (_React$Component) {
           return "";
         }
       });
-    }
+    } // fileHandler(event) {
+    //   const file = event.target.files[0];
+    //   const fileReader = new FileReader();
+    //   fileReader.onloadend = () => {
+    //     this.setState({ photo: file, preview: fileReader.result });
+    //   };
+    //   if (file) {
+    //     fileReader.readAsDataURL(file);
+    //   }
+    // }
+    // handleSubmit(event) {
+    //   event.preventDefault();
+    //   let button = event.target;
+    //   let parent = button.parentElement;
+    //   let loader = document.createElement('p');
+    //   loader.innerText = 'posting';
+    //   loader.classList.add('dummy-submit-button');
+    //   parent.removeChild(button);
+    //   parent.appendChild(loader);
+    //   const formData = new FormData();
+    //   // const filledForm = append(formData, { 'post[location]': this.state.location} );
+    //   formData.append('user[profilePhoto]', this.state.profilePhoto);
+    //   this.props.action(formData)
+    //     .then(() => {
+    //       this.setState({
+    //         profilePhoto: null,
+    //         preview: null
+    //       });
+    //       document.getElementById('postform').className = 'hide';
+    //     });
+    // }
+    // fileUploadHandler() {
+    //   this.handleSubmit()
+    // }
+    // updateProPic() {
+    //   return <label onClick={this.fileUploadHandler}>
+    //           <p>Upload</p>
+    //           <input type="file"
+    //             accept="image/*"
+    //             onChange={this.fileHandler} />
+    //         </label>
+    // }
+
   }, {
     key: "render",
     value: function render() {
       var user = this.props.user;
-      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_7__["default"], null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("section", {
+      if (user) return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_7__["default"], null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("section", {
         className: "profile-header"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
         className: "pro-pic",
@@ -1393,8 +1439,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   var user = state.entities.users[ownProps.match.params.id];
-  var posts = state.entities.posts;
-  console.log(state);
+  var posts = state.entities.posts; // console.log(state);
 
   if (user) {
     posts = user.postIds.map(function (id) {

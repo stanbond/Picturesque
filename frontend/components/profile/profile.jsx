@@ -8,9 +8,13 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: {}
+      posts: {},
+      profilePhoto: null
     };
     this.renderPost = this.renderPost.bind(this);
+    // this.updateProPic = this.updateProPic.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
+    // this.fileHandler = this.fileHandler.bind(this);
   }
 
   componentDidMount() {
@@ -20,26 +24,79 @@ class Profile extends React.Component {
 
   renderPost() {
     return (
-    Object.values(this.props.posts).reverse().map((post, idx) => {
-      if(post === undefined)
-        return;
-      if(post.user_id === this.props.user.id) {
-        return <img key={idx} src={post.photoUrl} />
-        // <li key={idx}>{post.caption}</li>;
-      } else{
-        return ""
-      }
-    })
+      Object.values(this.props.posts).reverse().map((post, idx) => {
+        if (post === undefined)
+          return;
+        if (post.user_id === this.props.user.id) {
+          return <img key={idx} src={post.photoUrl} />
+          // <li key={idx}>{post.caption}</li>;
+        } else {
+          return ""
+        }
+      })
     )
   }
+  // fileHandler(event) {
+  //   const file = event.target.files[0];
+  //   const fileReader = new FileReader();
+  //   fileReader.onloadend = () => {
+  //     this.setState({ photo: file, preview: fileReader.result });
+  //   };
+  //   if (file) {
+  //     fileReader.readAsDataURL(file);
+  //   }
+  // }
+  // handleSubmit(event) {
+  //   event.preventDefault();
+    
+  //   let button = event.target;
+  //   let parent = button.parentElement;
+  //   let loader = document.createElement('p');
+  //   loader.innerText = 'posting';
+  //   loader.classList.add('dummy-submit-button');
+  //   parent.removeChild(button);
+  //   parent.appendChild(loader);
+
+  //   const formData = new FormData();
+  //   // const filledForm = append(formData, { 'post[location]': this.state.location} );
+  //   formData.append('user[profilePhoto]', this.state.profilePhoto);
+    
+  //   this.props.action(formData)
+  //     .then(() => {
+  //       this.setState({
+  //         profilePhoto: null,
+  //         preview: null
+  //       });
+  //       document.getElementById('postform').className = 'hide';
+  //     });
+  // }
+  // fileUploadHandler() {
+  //   this.handleSubmit()
+  // }
+
+
+  // updateProPic() {
+  //   return <label onClick={this.fileUploadHandler}>
+  //           <p>Upload</p>
+  //           <input type="file"
+  //             accept="image/*"
+  //             onChange={this.fileHandler} />
+  //         </label>
+  // }
 
   render() {
     let { user } = this.props;
-    return (
+    if (user) return (
       <>
-      <NavBarContainer/>
+        <NavBarContainer />
         <section className="profile-header">
           <img className="pro-pic" src={this.props.user.profilePhoto} />
+          {/* <label>
+            <p>Upload</p>
+            <input type="file"
+              accept="image/*"
+              onChange={this.fileHandler} />
+          </label> */}
           <div>
             <h2>{user.username}</h2>
             <p><strong>{user.postIds.length}</strong>posts</p>
@@ -50,23 +107,22 @@ class Profile extends React.Component {
           <div className="profile-menu">
             <div className="posts">
               <p>POSTS</p>
-          
-          </div>
-          <div className="posts-grid">
-            {this.renderPost()}
-            {/* {this.props.posts.map((post, idx) => {
+
+            </div>
+            <div className="posts-grid">
+              {this.renderPost()}
+              {/* {this.props.posts.map((post, idx) => {
               <ProfilePostItem
                 key={idx}
                 post={post} />;
             })}  */}
+            </div>
           </div>
         </div>
-        </div>
         <PostForm />
-        
+
       </>
     );
   }
-
 }
 export default withRouter(Profile);

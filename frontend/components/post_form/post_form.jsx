@@ -8,7 +8,7 @@ class PostForm extends React.Component {
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePhoto = this.handlePhoto.bind(this);
-    this.renderSumbit = this.renderSumbit.bind(this);
+    this.renderSubmit = this.renderSubmit.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
@@ -69,7 +69,7 @@ class PostForm extends React.Component {
       });
   }
 
-  renderSumbit() {
+  renderSubmit() {
     if (this.state.caption === '') {
       return (
         <div>
@@ -133,7 +133,7 @@ class PostForm extends React.Component {
                 value={this.state.location}
                 placeholder="Add location"
                 onChange={this.handleInput('location')} />
-              {this.renderSumbit()}
+              {this.renderSubmit()}
               {errors}
             </div>
           </div>
