@@ -2,6 +2,7 @@ import React from 'react';
 import NavBarContainer from '../nav_bar/nav_bar_container';
 import { withRouter } from 'react-router-dom';
 import ProfilePostItem from './profile_post_item';
+import PostForm from '../post_form/post_form_container'
 
 class Profile extends React.Component {
   constructor(props) {
@@ -61,7 +62,8 @@ class Profile extends React.Component {
           </div>
         </div>
         </div>
-        {/* <CreatePostFormContainer /> */}
+        <PostForm />
+        
       </>
     );
   }

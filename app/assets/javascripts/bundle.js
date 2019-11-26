@@ -1290,6 +1290,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../nav_bar/nav_bar_container */ "./frontend/components/nav_bar/nav_bar_container.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _profile_post_item__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./profile_post_item */ "./frontend/components/profile/profile_post_item.jsx");
+/* harmony import */ var _post_form_post_form_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../post_form/post_form_container */ "./frontend/components/post_form/post_form_container.js");
+
 
 
 
@@ -1360,7 +1362,7 @@ function (_React$Component) {
         className: "posts"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, "POSTS")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "posts-grid"
-      }, this.renderPost()))));
+      }, this.renderPost()))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_post_form_post_form_container__WEBPACK_IMPORTED_MODULE_10__["default"], null));
     }
   }]);
 
