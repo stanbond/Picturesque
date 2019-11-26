@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+
 .pro-pic {
   width: 150px;
   height: 150px;
@@ -47,8 +49,8 @@
     justify-content: center;
     align-items: center;
     height: 40px;
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 550;
 
     .posts {
       border-top: 1px solid black;
@@ -89,5 +91,34 @@
         object-fit: cover;
       }
     }
+  }
+}
+.footer {
+  background-color: #FAFAFA;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  display: flex; 
+  flex-direction: row; 
+  justify-content: center; 
+  align-items: center; 
+  font-weight: 600;
+  padding-top: 50px;
+  padding-bottom: 20px; 
+
+  a {
+    text-decoration: none;  
+    color: #003569; 
+    margin-left: 5px; 
+    margin-right: 5px; 
+  }
+
+  a:hover {
+    cursor: pointer;
+  }
+
+  p {
+    color: #999999; 
+    margin-left: 10px; 
+    margin-right: 10px; 
   }
 }

@@ -1414,7 +1414,13 @@ function (_React$Component) {
         className: "posts"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, "POSTS"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "posts-grid"
-      }, this.renderPost())), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_post_form_post_form_container__WEBPACK_IMPORTED_MODULE_10__["default"], null));
+      }, this.renderPost())), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_post_form_post_form_container__WEBPACK_IMPORTED_MODULE_10__["default"], null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "footer"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
+        href: "https://github.com/stanbond"
+      }, "GITHUB"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
+        href: "https://www.linkedin.com/in/stanbondarenko/"
+      }, "LINKEDIN"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, "2019 PICTURESQUE")));
     }
   }]);
 

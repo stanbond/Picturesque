@@ -124,7 +124,12 @@ class Profile extends React.Component {
           
         </div>
         <PostForm />
-
+        <div className="footer">
+          {/* <a href="https://stanbond.dev">ABOUT ME</a> */}
+          <a href="https://github.com/stanbond">GITHUB</a>
+          <a href="https://www.linkedin.com/in/stanbondarenko/">LINKEDIN</a>
+          <p>2019 PICTURESQUE</p>
+        </div>
       </>
     );
   }
