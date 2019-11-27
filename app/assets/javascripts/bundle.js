@@ -361,7 +361,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+ // const ProfileContainer = React.lazy(() => import('./profile/profile_container'));
 
 var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["AuthRoute"], {
@@ -1072,32 +1072,51 @@ function (_React$Component) {
   _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(PostIndex, _React$Component);
 
   function PostIndex(props) {
+    var _this;
+
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, PostIndex);
 
-    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(PostIndex).call(this, props));
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(PostIndex).call(this, props));
+    _this.state = {
+      loading: true
+    };
+    return _this;
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(PostIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchAllPosts();
+      var _this2 = this;
+
+      this.props.fetchAllPosts().then(function () {
+        return _this2.setState({
+          loading: false
+        });
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this3 = this;
 
       var posts = Object.values(this.props.posts);
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_5___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "feed"
-      }, posts.map(function (post, idx) {
-        var user = _this.props.users[post.user_id];
-        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_post_index_item_container__WEBPACK_IMPORTED_MODULE_7__["default"], {
-          key: idx,
-          user: user,
-          post: post
-        });
-      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_post_form_post_form_container__WEBPACK_IMPORTED_MODULE_8__["default"], null));
+
+      if (this.state.loading === true) {
+        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+          className: "loader"
+        }, "Loading..");
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_5___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+          className: "feed"
+        }, posts.map(function (post, idx) {
+          var user = _this3.props.users[post.user_id];
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_post_index_item_container__WEBPACK_IMPORTED_MODULE_7__["default"], {
+            key: idx,
+            user: user,
+            post: post
+          });
+        })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_post_form_post_form_container__WEBPACK_IMPORTED_MODULE_8__["default"], null));
+      }
     }
   }]);
 
@@ -1289,8 +1308,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../nav_bar/nav_bar_container */ "./frontend/components/nav_bar/nav_bar_container.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _profile_post_item__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./profile_post_item */ "./frontend/components/profile/profile_post_item.jsx");
-/* harmony import */ var _post_form_post_form_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../post_form/post_form_container */ "./frontend/components/post_form/post_form_container.js");
+/* harmony import */ var _post_form_post_form_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../post_form/post_form_container */ "./frontend/components/post_form/post_form_container.js");
 
 
 
@@ -1299,7 +1317,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+ // import ProfilePostItem from './profile_post_item';
 
 
 
@@ -1316,7 +1334,8 @@ function (_React$Component) {
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Profile).call(this, props));
     _this.state = {
       posts: {},
-      profilePhoto: null
+      profilePhoto: null,
+      loading: true
     };
     _this.renderPost = _this.renderPost.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this)); // this.updateProPic = this.updateProPic.bind(this);
     // this.handleSubmit = this.handleSubmit.bind(this);
@@ -1328,18 +1347,44 @@ function (_React$Component) {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Profile, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var _this2 = this;
+
       this.props.fetchUser(this.props.match.params.id);
-      this.props.fetchAllPosts();
+      this.props.fetchAllPosts().then(function () {
+        return _this2.setState({
+          loading: false
+        });
+      });
+    }
+  }, {
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      var _this3 = this;
+
+      if (this.props.match.params.id !== nextProps.match.params.id) {
+        this.setState({
+          loading: true
+        });
+        this.props.fetchUser(nextProps.match.params.id);
+        this.props.fetchAllPosts().then(function () {
+          return _this3.setState({
+            loading: false
+          });
+        });
+        return false;
+      }
+
+      return true;
     }
   }, {
     key: "renderPost",
     value: function renderPost() {
-      var _this2 = this;
+      var _this4 = this;
 
       return Object.values(this.props.posts).reverse().map(function (post, idx) {
         if (post === undefined) return;
 
-        if (post.user_id === _this2.props.user.id) {
+        if (post.user_id === _this4.props.user.id) {
           return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
             className: "profile-post-item"
           }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
@@ -1397,30 +1442,37 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var user = this.props.user;
-      if (user) return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_7__["default"], null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("section", {
-        className: "profile-header"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
-        className: "pro-pic",
-        src: this.props.user.profilePhoto
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "pro-user-info"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h2", {
-        className: "pro-username"
-      }, user.username), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("strong", null, user.postIds.length), " posts"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, user.bio))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "profile-posts"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "profile-menu"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "posts"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, "POSTS"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "posts-grid"
-      }, this.renderPost())), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_post_form_post_form_container__WEBPACK_IMPORTED_MODULE_10__["default"], null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "footer"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
-        href: "https://github.com/stanbond"
-      }, "GITHUB"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
-        href: "https://www.linkedin.com/in/stanbondarenko/"
-      }, "LINKEDIN"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, "2019 PICTURESQUE")));
+
+      if (this.state.loading === true) {
+        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+          className: "loader"
+        }, "Loading..");
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_7__["default"], null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("section", {
+          className: "profile-header"
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
+          className: "pro-pic",
+          src: this.props.user.profilePhoto
+        }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+          className: "pro-user-info"
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h2", {
+          className: "pro-username"
+        }, user.username), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("strong", null, user.postIds.length), " posts"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, user.bio))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+          className: "profile-posts"
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+          className: "profile-menu"
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+          className: "posts"
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, "POSTS"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+          className: "posts-grid"
+        }, this.renderPost())), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_post_form_post_form_container__WEBPACK_IMPORTED_MODULE_9__["default"], null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+          className: "footer"
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
+          href: "https://github.com/stanbond"
+        }, "GITHUB"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
+          href: "https://www.linkedin.com/in/stanbondarenko/"
+        }, "LINKEDIN"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, "2019 PICTURESQUE")));
+      }
     }
   }]);
 
@@ -1479,67 +1531,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_profile__WEBPACK_IMPORTED_MODULE_2__["default"]));
-
-/***/ }),
-
-/***/ "./frontend/components/profile/profile_post_item.jsx":
-/*!***********************************************************!*\
-  !*** ./frontend/components/profile/profile_post_item.jsx ***!
-  \***********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-
-
-
-
-
-
-
-
-var ProfilePostItem =
-/*#__PURE__*/
-function (_React$Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(ProfilePostItem, _React$Component);
-
-  function ProfilePostItem(props) {
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, ProfilePostItem);
-
-    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(ProfilePostItem).call(this, props));
-  }
-
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(ProfilePostItem, [{
-    key: "render",
-    value: function render() {
-      // let {like_ids} = this.props.post;
-      // console.log(this.props.post)
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "profile-post"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
-        src: this.props.post.photoUrl
-      }));
-    }
-  }]);
-
-  return ProfilePostItem;
-}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (ProfilePostItem);
 
 /***/ }),
 

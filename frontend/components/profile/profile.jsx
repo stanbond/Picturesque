@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBarContainer from '../nav_bar/nav_bar_container';
 import { withRouter } from 'react-router-dom';
-import ProfilePostItem from './profile_post_item';
+// import ProfilePostItem from './profile_post_item';
 import PostForm from '../post_form/post_form_container'
 
 class Profile extends React.Component {
@@ -9,7 +9,8 @@ class Profile extends React.Component {
     super(props);
     this.state = {
       posts: {},
-      profilePhoto: null
+      profilePhoto: null,
+      loading: true
     };
     this.renderPost = this.renderPost.bind(this);
     // this.updateProPic = this.updateProPic.bind(this);
@@ -19,7 +20,16 @@ class Profile extends React.Component {
 
   componentDidMount() {
     this.props.fetchUser(this.props.match.params.id);
-    this.props.fetchAllPosts();
+    this.props.fetchAllPosts().then(() => this.setState({ loading: false }));
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.match.params.id !== nextProps.match.params.id) {
+      this.setState({ loading: true });
+      this.props.fetchUser(nextProps.match.params.id);
+      this.props.fetchAllPosts().then(() => this.setState({ loading: false }));
+      return false;
+    }
+    return true;
   }
 
   renderPost() {
@@ -88,7 +98,12 @@ class Profile extends React.Component {
 
   render() {
     let { user } = this.props;
-    if (user) return (
+    if (this.state.loading === true) {
+      return (
+        <div className="loader">Loading..</div>
+      );
+    } else {
+      return (
       <>
         <NavBarContainer />
         <section className="profile-header">
@@ -131,7 +146,8 @@ class Profile extends React.Component {
           <p>2019 PICTURESQUE</p>
         </div>
       </>
-    );
+      );
+    }
   }
 }
 export default withRouter(Profile);

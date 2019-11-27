@@ -6,14 +6,22 @@ import PostFormContainer from '../post_form/post_form_container'
 class PostIndex extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      loading: true
+    }
   }
 
   componentDidMount() {
-    this.props.fetchAllPosts();
+    this.props.fetchAllPosts().then(() => this.setState({ loading: false })); 
   }
 
   render() {
     let posts = Object.values(this.props.posts);
+    if (this.state.loading === true) {
+      return (
+        <div className="loader">Loading..</div>
+      );
+    } else {
     return (
       <>
         <NavBarContainer />
@@ -29,6 +37,7 @@ class PostIndex extends React.Component {
         <PostFormContainer />
       </>
     )
+    }
   }
 }
 

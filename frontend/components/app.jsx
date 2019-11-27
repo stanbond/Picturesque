@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspence, lazy } from "react";
 import GreetingContainer from './greeting/greeting_container';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
@@ -8,6 +8,7 @@ import { Switch } from 'react-router-dom';
 import SplashContainer from './splash/splash_container';
 import PostIndexContainer from '../components/posts/post_index_container';
 import ProfileContainer from './profile/profile_container';
+// const ProfileContainer = React.lazy(() => import('./profile/profile_container'));
 
 
 const App = () => (
@@ -20,7 +21,9 @@ const App = () => (
 
     <Switch>
       <ProtectedRoute path='/home' component={PostIndexContainer}/>
+      {/* <Suspence fallback={<div>Loading..</div>}> */}
       <ProtectedRoute path='/profile/:id' component={ProfileContainer} />
+      {/* </Suspence> */}
     </Switch>
   </div>
 );
